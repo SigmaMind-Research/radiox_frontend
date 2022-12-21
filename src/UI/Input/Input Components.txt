@@ -1,0 +1,5 @@
+Input: 
+     1. Image Input
+     2. Name field
+     3. Email field
+     4. Password field
