@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sample Sign-In page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+
+  </head>
+  <body>
+
+  <div class="container" id="container">
+	  <div class="form-container sign-in-container">
+		  <form action="#">
+        <img src="public/images/user.png" alt="">
+			  <h1>Create Account</h1>
+       <input type="text" placeholder="Name" />
+       <input type="email" placeholder="Email" />
+       <input type="password" id="password" placeholder="Password" />
+       <i class="fa-solid fa-eye-slash fa-sm" id="eye"></i>
+       <button>Sign Up</button>
+	  	</form>
+	  </div>
+	  <div class="overlay-container">
+		  <div class="overlay">
+		  	<div class="overlay-panel overlay-right">
+		  		<h1 class="overlay-heading">Welcome Back!</h1>
+		  		<p class="overlay-heading">If you already have an account, please login</p>
+		  		<button class="ghost" id="signUp">Sign In</button>
+		  	</div>
+		  </div>
+  	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+<script>
+
+  $("#eye").click(function(){
+   $(this).toggleClass('fa-eye');
+   var x = $("#password").attr("type");
+   if(x==="password"){
+     $("#password").attr("type","text");
+   }else{
+     $("#password").attr("type","password");
+   }
+  });
+</script>
+
+
+  </body>
+</html>
