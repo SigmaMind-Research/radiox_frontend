@@ -1,5 +1,0 @@
-Buttons:
-     1. Premium User
-     2. Image Upload 
-     3. Login/Sign-up 
-
