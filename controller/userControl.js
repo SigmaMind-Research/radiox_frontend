@@ -3,7 +3,7 @@ const request_get = (req,res) => {
 }
 
 const request_post = (req,res) => {
-  res.render("../views/home.ejs");
+  res.render("../views/home");
 }
 
 module.exports = {
