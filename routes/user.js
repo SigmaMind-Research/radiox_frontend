@@ -4,8 +4,8 @@ const controller = require("../controller/userControl");
 
 router.get("/",controller.request_get);
 
-router.post("/signin", controller.request_post);
+router.post("/signin", controller.signin_post);
 
-router.post("/signup", controller.request_post);
+router.post("/signup", controller.signup_post);
 
 module.exports = router;
