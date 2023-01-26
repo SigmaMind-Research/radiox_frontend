@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const {axiosIns} = require('./axiosIns')
+require('dotenv').config()
+
 // const {headers} = require('./headers')
 
 const app = express();
@@ -23,7 +25,7 @@ const signup_post = function(req,res) {
   name = req.body.IDname;
   email = req.body.email;
   gen = req.body.gender;
-  axiosIns.post("https://gorest.co.in/public/v2/users",{
+  axiosIns.post(process.env.API_BASE_URL,{
       name : name,
       email : email,
       gender : gen,
