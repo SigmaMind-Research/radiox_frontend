@@ -4,8 +4,6 @@
       <button>RADIOX</button>
       </h1>
     <template v-slot:append>
-      <v-btn class="icon-ele"> <v-icon icon="mdi-share-variant"/></v-btn>
-
       <v-btn class="icon-ele"> <v-icon icon="mdi-help-circle"/></v-btn>
        <v-menu transition="scroll-y-transition">
         <template v-slot:activator="{ props }">
@@ -19,47 +17,13 @@
       </v-menu>
     </template>
   </v-app-bar>
- <!-- <v-app-bar color="#252529" class="nav ">
-   <h1>
-    <button>RADIOX</button>
-    </h1>
-    <v-switch class="tog" v-model="mode" color="surface" hide-details inset :label="`mode: ${mode.toString()}`"></v-switch>
-    <div class="ico ">
-            <button class="icon-ele">
-      </button>
-      <button class="icon-ele">
-        <v-icon icon="mdi-printer" />
-      </button>
-      <button class="icon-ele">
-      <v-icon icon="mdi-file-cabinet" />
-      </button>
-      <button  class="icon-ele">
-      <v-icon icon="mdi-share-variant" />
-      </button>
-      <button  class="icon-ele acc">
-      <v-icon icon="mdi-help-circle" />
-      </button>
-
-          <v-menu transition="scroll-y-transition">
-          <template v-slot:activator="{ props }">
-            <button class="icon-ele" v-bind="props"> <v-icon icon="mdi-account"/></button>
-          </template>
-        <v-list>
-            <v-list-item v-for="info in accoundinfo" :key="info" link>
-          <v-list-item-title>{{info}}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
-
-    </div>
-   </v-app-bar> -->
 </template>
 
 <script>
 export default {
 data(){
   return{
-    accoundinfo:['Profile','Settings','help','send feedback','Sign out'],
+    accoundinfo:['Profile','Settings','Help','Send feedback','Sign out'],
      mode: false,
   }
 }
@@ -84,8 +48,8 @@ h1{
   margin-right: 0;
 } */
 .icon-ele{
-  margin: 0 30px;
+  margin-right:10%;
   color: aliceblue;
-  font-size: 28px;
+  font-size: 27px;
 }
 </style>

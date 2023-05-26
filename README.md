@@ -11,6 +11,10 @@ This template should help get you started developing with Vue 3 in Vite.
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
+```sh
+node-version: v16.0.0 or higher
+use Node Version Manager NVM
+```
 
 ```sh
 npm install

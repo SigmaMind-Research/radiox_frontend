@@ -1,6 +1,6 @@
 <template>
   <v-main style="min-height:100%" color="#252529">
-  <img class="samimg" src="public/sampleimage.jpeg" alt="">
+  <img class="samimg" src="/sampleimage.jpeg" alt="">
   </v-main>
 </template>
 
