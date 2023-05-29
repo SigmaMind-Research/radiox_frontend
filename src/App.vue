@@ -4,7 +4,6 @@
       <v-layout>
         <Navbar />
         <Sidebar />
-        <Rightbar />
         <Main />
       </v-layout>
       <Footer v-show="!viewTools" @close="viewTools = true" />
@@ -17,7 +16,6 @@
 import Navbar from './components/navbar.vue'
 import Sidebar from './components/sidebar.vue'
 import Main from './components/main.vue'
-import Rightbar from './components/rightbar.vue'
 import Footer from './components/footer.vue'
 import Tools from './components/toolsfooter.vue'
 
@@ -31,7 +29,6 @@ export default {
     Navbar,
     Sidebar,
     Main,
-    Rightbar,
     Footer,
     Tools
   }
