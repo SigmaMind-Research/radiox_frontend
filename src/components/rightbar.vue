@@ -2,12 +2,12 @@
   <v-navigation-drawer width="420" color="#1e1e20" location="right" class="leftside">
     <v-list>
       <v-list-item>
-        <v-card id="card" title="Upload image" text="Please upload your x-ray image here. " variant="toned">
+        <v-card id="card" title="Upload image" text="Please upload your x-ray image here.">
           <div class="upload">
-            <v-file-input :rules="rules" accept="image/png, image/jpeg, image/bmp" @change=uploadImage
-              placeholder="upload x-ray ...." prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
-
-            <v-btn location="center" @click="$emit('setImg', previewImage)" color="primary">upload</v-btn>
+            <v-file-input accept="image/png, image/jpeg, image/bmp"
+              @change="uploadImage($event), $emit('setImg', previewImage)" placeholder="upload x-ray ...."
+              prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
+            <v-btn location="center" @click="" color="primary">upload</v-btn>
             <v-card-actions>
               <v-btn id="subbtn" variant="tonal" @click.stop="drawer = true">Submit</v-btn>
             </v-card-actions>
@@ -62,30 +62,14 @@
 
 <script>
 export default {
-  data: () => ({
-    drawer: false,
-    group: null,
-    previewImage: null,
-    getname: "hiiiii",
-    items: [
-      {
-        title: 'Foo',
-        value: 'foo',
-      },
-      {
-        title: 'Bar',
-        value: 'bar',
-      },
-      {
-        title: 'Fizz',
-        value: 'fizz',
-      },
-      {
-        title: 'Buzz',
-        value: 'buzz',
-      },
-    ],
-  }),
+  data() {
+    return {
+
+      drawer: false,
+      group: null,
+      // previewImage: null,
+    }
+  },
   methods: {
     uploadImage(e) {
       const image = e.target.files[0];
@@ -131,4 +115,5 @@ export default {
 
 .rows {
   padding: 1.5%;
-}</style>
+}
+</style>

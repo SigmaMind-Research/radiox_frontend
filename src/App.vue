@@ -3,21 +3,15 @@
     <v-card>
       <v-layout>
         <Navbar />
-        <Sidebar />
         <Main />
       </v-layout>
-      <Footer v-show="!viewTools" @close="viewTools = true" />
-      <Tools v-show="viewTools" @close="viewTools = false" />
     </v-card>
   </v-app>
 </template>
 
 <script>
 import Navbar from './components/navbar.vue'
-import Sidebar from './components/sidebar.vue'
 import Main from './components/main.vue'
-import Footer from './components/footer.vue'
-import Tools from './components/toolsfooter.vue'
 
 export default {
   data() {
@@ -27,10 +21,7 @@ export default {
   },
   components: {
     Navbar,
-    Sidebar,
     Main,
-    Footer,
-    Tools
   }
 }
 </script>
