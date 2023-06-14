@@ -3,7 +3,7 @@
         <v-row justify="center">
             <v-menu transition="scroll-y-reverse-transition">
                 <template v-slot:activator="{ props }">
-                    <v-btn class="ma-2" v-bind="props" @click="$emit('close')" v-show="!upbtn">
+                    <v-btn class="ma-2" v-bind="props" @click="$emit('close')">
                         <v-icon>mdi-pencil</v-icon>
                         Tools
                     </v-btn>
@@ -21,19 +21,7 @@
             </v-menu>
             <v-menu transition="scroll-y-reverse-transition">
                 <template v-slot:activator="{ props }">
-                    <v-btn class="ma-2" v-bind="props" v-show="upbtn" @click="$emit('setImg', previewImage), upbtn = false"
-                        color="primary">
-                        <v-icon icon="mdi-image-area-close"></v-icon>
-                        upload
-                    </v-btn>
-                </template>
-
-            </v-menu>
-
-
-            <v-menu transition="scroll-y-reverse-transition">
-                <template v-slot:activator="{ props }">
-                    <v-btn class="ma-2" v-bind="props" v-show="!upbtn">
+                    <v-btn class="ma-2" v-bind="props">
                         <v-icon>mdi-history</v-icon>
                         Recent
                     </v-btn>
@@ -47,28 +35,15 @@
 </template>
 
 <script>
+import upload from '../mixins/upload';
 export default {
     data() {
         return {
             value: '',
-            upbtn: false
-
-        }
-    },
-    methods: {
-        uploadImage(e) {
-            const image = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            this.upbtn = true
-
-            reader.onload = e => {
-                this.previewImage = e.target.result;
-                console.log(this.previewImage);
-            };
         }
     },
     emits: ['close', 'setImg'],
+    mixins: [upload]
 }
 </script>
 <style>

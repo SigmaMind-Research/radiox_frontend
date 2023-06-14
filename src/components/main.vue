@@ -2,54 +2,27 @@
   <Sidebar />
   <v-main style="min-height:100vh" color="#252529">
     <img :src="previewImage" alt="" class="samimg">
-    <v-btn id="subbtn" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom"
-      color="primary">Submit</v-btn>
+    <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom" color="primary">Submit</v-btn>
   </v-main>
 
-  <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
-    <v-container class="info">
-      <v-row class="rows" no-gutters>
-        <v-col cols="2">
-          <label for="Char1">Char1</label>
-        </v-col>
-        <v-col>
-          <v-sheet>
-            <v-slider readonly="true"></v-slider> </v-sheet>
-        </v-col>
-      </v-row>
-      <v-row class="rows" no-gutters>
-        <v-col cols="2">
-          <label for="Char2">Char2</label>
-        </v-col>
-        <v-col>
-          <v-sheet>
-            <v-slider readonly="true"></v-slider> </v-sheet>
-        </v-col>
-      </v-row>
-      <v-row class="rows" no-gutters>
-        <v-col cols="2">
-          <label for="Char3">Char3</label>
-        </v-col>
-        <v-col>
-          <v-sheet>
-            <v-slider readonly="true"></v-slider> </v-sheet>
-        </v-col>
-      </v-row>
-      <v-row class="rows" no-gutters>
-        <v-col cols="2">
-          <label for="Char4">Char4</label>
-        </v-col>
-        <v-col>
-          <v-sheet>
-            <v-slider readonly="true"></v-slider> </v-sheet>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
-  </v-navigation-drawer>
-  <Rightbar @setImg="imgset" />
-  <Footer id="footerset" v-show="!viewTools" @close="viewTools = true" @setImg="imgset" />
-  <Tools id="footerset" v-show="viewTools" @close="viewTools = false" />
+   
+    <Rightbar @setImg="imgset" />
+
+    <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
+        <v-container class="info">
+          <div id="chart">
+            <apexchart type="bar" height="550" :options="chartOptions" :series="series"></apexchart>
+          </div>
+          </v-container>
+          <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
+        </v-navigation-drawer>
+      
+        <div v-if="!viewTools">
+          <Footer id="footerset" @close="viewTools = true" @setImg="imgset" />
+        </div>
+        <div v-if="viewTools">
+          <Tools id="footerset" @close="viewTools = false" @brig="bright" @cont="contrast" />
+        </div>
 </template>
 
 <script>
@@ -57,6 +30,9 @@ import Sidebar from './sidebar.vue'
 import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
 import Tools from './toolsfooter.vue'
+
+import apexchart from "vue3-apexcharts";
+import bargrph from '../mixins/bargrph';
 export default {
   data() {
     return {
@@ -71,7 +47,8 @@ export default {
     Sidebar,
     Rightbar,
     Footer,
-    Tools
+    Tools,
+    apexchart
   },
   methods: {
     imgset(name) {
@@ -84,6 +61,7 @@ export default {
       this.drawer = false
     },
   },
+  mixins: [bargrph],
 }
 </script>
 <style>
@@ -92,10 +70,18 @@ export default {
   height: 110%;
   padding: 3px;
 }
-
-@media screen and (min-width:1224px) {
-  #footerset {
-    display: none;
-  }
+#subb {
+  position: absolute;
+  margin: auto;
+  margin-bottom: 65px;
+  padding: 0 30px;
+}
+@media screen and (min-width:1280px){
+    #footerset{
+        display:none;
+    }
+    #subb{
+      display: none;
+    }
 }
 </style>
