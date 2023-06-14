@@ -1,28 +1,29 @@
 <template>
-  <Sidebar />
+  <Sidebar @brig="bright" @cont="contrast" />
   <v-main style="min-height:100vh" color="#252529">
-    <img :src="previewImage" alt="" class="samimg">
-    <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom" color="primary">Submit</v-btn>
+    <img :src="previewImage" :style="{ filter: 'brightness(' + bt + '%) ' + 'contrast(' + cont + '%)' }" alt=""
+      class="samimg">
+    <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom"
+      color="primary">Submit</v-btn>
   </v-main>
 
-   
-    <Rightbar @setImg="imgset" />
+  <Rightbar @setImg="imgset" />
 
-    <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
-        <v-container class="info">
-          <div id="chart">
-            <apexchart type="bar" height="550" :options="chartOptions" :series="series"></apexchart>
-          </div>
-          </v-container>
-          <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
-        </v-navigation-drawer>
-      
-        <div v-if="!viewTools">
-          <Footer id="footerset" @close="viewTools = true" @setImg="imgset" />
-        </div>
-        <div v-if="viewTools">
-          <Tools id="footerset" @close="viewTools = false" @brig="bright" @cont="contrast" />
-        </div>
+  <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
+    <v-container class="info">
+      <div id="chart">
+        <apexchart type="bar" height="550" :options="chartOptions" :series="series"></apexchart>
+      </div>
+    </v-container>
+    <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
+  </v-navigation-drawer>
+
+  <div v-if="!viewTools">
+    <Footer id="footerset" @close="viewTools = true" @setImg="imgset" />
+  </div>
+  <div v-if="viewTools">
+    <Tools id="footerset" @close="viewTools = false" @brig="bright" @cont="contrast" />
+  </div>
 </template>
 
 <script>
@@ -40,7 +41,9 @@ export default {
       viewTools: false,
       drawer: false,
       group: null,
-      sub: false
+      bt: 100,
+      cont: 100,
+      sub: false,
     }
   },
   components: {
@@ -54,6 +57,14 @@ export default {
     imgset(name) {
       this.previewImage = name;
       this.sub = true;
+    },
+    bright(value) {
+      this.bt = value * 2 + 20;
+      console.log(value * 2 + 20);
+    },
+    contrast(value) {
+      this.cont = value * 2 + 20;
+      console.log(value * 2 + 20);
     }
   },
   watch: {
@@ -70,18 +81,20 @@ export default {
   height: 110%;
   padding: 3px;
 }
+
 #subb {
   position: absolute;
   margin: auto;
   margin-bottom: 65px;
   padding: 0 30px;
 }
-@media screen and (min-width:1280px){
-    #footerset{
-        display:none;
-    }
-    #subb{
-      display: none;
-    }
-}
-</style>
+
+@media screen and (min-width:1280px) {
+  #footerset {
+    display: none;
+  }
+
+  #subb {
+    display: none;
+  }
+}</style>

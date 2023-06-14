@@ -18,8 +18,8 @@
                 </template>
                 <v-list>
                     <v-list-item>
-                        <v-slider v-model="briVal" track-color="white" color="white" class="slid"
-                            style="padding-top: 7px"></v-slider>
+                        <v-slider v-model="briVal" @click="$emit('brig', briVal)" track-color="white" color="white"
+                            class="slid" style="padding-top: 7px"></v-slider>
                         <h3 style="text-align:center">Brigntness: {{ (briVal - 50).toFixed(1) }}</h3>
                     </v-list-item>
                 </v-list>
@@ -34,8 +34,8 @@
                 </template>
                 <v-list>
                     <v-list-item>
-                        <v-slider v-model="conVal" track-color="white" color="white" class="slid"
-                            style="padding-top: 7px"></v-slider>
+                        <v-slider v-model="conVal" @click="$emit('cont', conVal)" track-color="white" color="white"
+                            class="slid" style="padding-top: 7px"></v-slider>
                         <h3 style="text-align:center">Contrast: {{ (conVal - 50).toFixed(1) }}</h3>
                     </v-list-item>
                 </v-list>
@@ -55,7 +55,7 @@ export default {
             tools: ['Brigntness', 'contrast']
         }
     },
-    emits: ['close']
+    emits: ['close', 'brig', 'cont']
 }
 </script>
 <style>

@@ -7,13 +7,16 @@
           <h2 class="toolbr">Toolbar</h2>
         </v-card>
         <v-card id="card" title="Brightness" variant="toned">
-          <v-slider v-model="briVal" track-color="white" color="white" class="slid"></v-slider>
+          <label id="lab" for="briVal" location="">{{ (briVal - 50).toFixed(1) }}</label>
+          <v-slider v-model="briVal" @click="$emit('brig', briVal)" track-color="white" color="white"
+            class="slid"></v-slider>
           <!-- <v-card-actions>
                 <v-btn>Click me</v-btn>
                 </v-card-actions> -->
         </v-card>
         <v-card id="card" title="Contrast" variant="toned">
-          <v-slider v-model="conVal" track-color="white" color="white" class="slid"></v-slider>
+          <v-slider v-model="conVal" @click="$emit('cont', conVal)" track-color="white" color="white"
+            class="slid"></v-slider>
           <!-- <v-card-actions>
                 <v-btn>Click me</v-btn>
                 </v-card-actions> -->
@@ -30,7 +33,8 @@ export default {
       briVal: 50,
       conVal: 50,
     }
-  }
+  },
+  emits: ['brig', 'cont']
 }
 </script>
 
@@ -49,4 +53,8 @@ export default {
   text-align: center;
   padding: 6px;
 }
-</style>
+
+#lab {
+  margin-left: 80%;
+
+}</style>
