@@ -18,10 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  <!-- <Sidebar @brig="bright" @cont="contrast" /> -->
   <v-main style="min-height:100vh; display: flex;" color="#252529">
-    <!-- <img :src="previewImage" :style="{ filter: 'brightness(' + bt + '%) ' + 'contrast(' + cont + '%)' }" alt=""
-      class="samimg"> -->
           <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
         class="samimg">
     <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom"
@@ -43,7 +40,6 @@
     <Footer id="footerset" @close="viewTools = true" @setImg="imgset" />
   </div>
   <div v-if="viewTools">
-    <!-- <Tools id="footerset" @close="viewTools = false" @brig="bright" @cont="contrast" /> -->
     <v-bottom-navigation v-model="value" color="blue" class="overflow-visible" style="height: 56px;" grow>
           <v-row justify="center">
               <v-menu transition="scroll-y-reverse-transition">
@@ -92,10 +88,8 @@
 </template>
 
 <script>
-import Sidebar from './sidebar.vue'
 import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
-import Tools from './toolsfooter.vue'
 
 import apexchart from "vue3-apexcharts";
 import bargrph from '../mixins/bargrph';
@@ -115,10 +109,8 @@ export default {
     }
   },
   components: {
-    Sidebar,
     Rightbar,
     Footer,
-    Tools,
     apexchart
   },
   methods: {
@@ -126,14 +118,6 @@ export default {
       this.previewImage = name;
       this.sub = true;
     },
-    // bright(value) {
-    //   this.bt = value * 2 + 20;
-    //   console.log(value * 2 + 20);
-    // },
-    // contrast(value) {
-    //   this.cont = value * 2 + 20;
-    //   console.log(value * 2 + 20);
-    // }
   },
   watch: {
     group() {
