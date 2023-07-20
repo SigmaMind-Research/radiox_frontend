@@ -47,19 +47,20 @@ export default {
   methods:{
     submitApi(){
       
-            const formimg = new FormData();
-            formimg.append('xray_image',this.previewImage);
+      const formimg = new FormData();
+      formimg.append('xray_image',this.previewImage);
       const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
       console.log(authTkn);
+      
       const head0 = {
-        "content-Type": `multipart/form-data; boundary=${formimg._boundary}`,
+        "content-Type": 'multipart/form-data',
         "Authorization": authTkn
       };
 
       axios({
         method: "post",
         url: 'https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/',
-        data: this.previewImage,
+        data: formimg,
         headers: head0
       })
       .then(response => {
