@@ -7,7 +7,7 @@
             <v-file-input accept="image/png, image/jpeg, image/bmp" @change="uploadImage($event)"
               placeholder="upload x-ray ...." prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
             <v-card-actions>
-              <v-btn id="subbtn" variant="tonal" @click.stop="drawer = true">Submit</v-btn>
+              <v-btn id="subbtn" variant="tonal" @click="submitApi">Submit</v-btn>
             </v-card-actions>
           </div>
         </v-card>
@@ -15,24 +15,58 @@
     </v-list>
   </v-navigation-drawer>
 
-  <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
-    <div id="chart">
-      <apexchart type="bar" height="750" :options="chartOptions" :series="series"></apexchart>
-    </div>
-    <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
-  </v-navigation-drawer>
+    <v-navigation-drawer v-model="drawer"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
+             <v-sheet class="d-flex bg-surface-variant">
+        <v-sheet width="35%">
+          <img :src="previewImage" alt="" class="samimg h-auto ">
+        </v-sheet>
+        <v-sheet width="65%">
+          <apexchart type="bar" height="750" :options="chartOptions" :series="series"></apexchart>
+        </v-sheet>
+      </v-sheet>
+      <div class="">
+        <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
+      </div>
+    </v-navigation-drawer>
 </template>
 
 <script>
 import apexchart from "vue3-apexcharts";
 import bargrph from "../mixins/bargrph";
 import upload from '../mixins/upload'
+
+import axios from 'axios';
 export default {
   data() {
     return {
-
+      previewImage: '',
       drawer: false,
       group: null,
+    }
+  },
+  methods:{
+    submitApi(){
+      
+            const formimg = new FormData();
+            formimg.append('xray_image',this.previewImage);
+      const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
+      console.log(authTkn);
+      const head0 = {
+        "content-Type": `multipart/form-data; boundary=${formimg._boundary}`,
+        "Authorization": authTkn
+      };
+
+      axios({
+        method: "post",
+        url: 'https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/',
+        data: this.previewImage,
+        headers: head0
+      })
+      .then(response => {
+        console.log(response);
+      })
+      // axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/',formimg,{headers:head0});
+      // this.drawer = true;
     }
   },
   components: {

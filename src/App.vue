@@ -1,29 +1,14 @@
 <template>
-  <v-app>
-    <v-card>
-      <v-layout>
-        <Navbar />
-        <Main />
-      </v-layout>
-    </v-card>
-  </v-app>
+  <router-view />
 </template>
 
 <script>
-import Navbar from './components/navbar.vue'
-import Main from './components/main.vue'
-
 export default {
-  data() {
-    return {
-      viewTools: false
-    }
-  },
-  components: {
-    Navbar,
-    Main,
-  }
+  name: 'first'
 }
 </script>
-
-<style></style>
+<style>
+a {
+  text-decoration: none;
+}
+</style>

@@ -1,4 +1,13 @@
 <template>
+    <v-main style="min-height:100vh; display: flex;" color="#252529">
+            <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
+          class="samimg">
+      <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom"
+        color="primary">Submit</v-btn>
+    </v-main>
+
+    <Rightbar @setImg="imgset" @rslt="$emit('rsltPrnt')" />
+
   <v-navigation-drawer color="#1e1e20" width="420">
       <v-list>
         <v-list-item>
@@ -17,15 +26,7 @@
           </v-card>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-  <v-main style="min-height:100vh; display: flex;" color="#252529">
-          <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
-        class="samimg">
-    <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom"
-      color="primary">Submit</v-btn>
-  </v-main>
-
-  <Rightbar @setImg="imgset" />
+    </v-navigation-drawer>Zz
 
   <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
     <v-container class="info">
@@ -39,7 +40,7 @@
   <div v-if="!viewTools">
     <Footer id="footerset" @close="viewTools = true" @setImg="imgset" />
   </div>
-  <div v-if="viewTools">
+  <div v-if="viewTools" id="footerset">
     <v-bottom-navigation v-model="value" color="blue" class="overflow-visible" style="height: 56px;" grow>
           <v-row justify="center">
               <v-menu transition="scroll-y-reverse-transition">
@@ -96,16 +97,16 @@ import bargrph from '../mixins/bargrph';
 export default {
   data() {
     return {
-      previewImage: "",
-      viewTools: false,
-      drawer: false,
-      group: null,
-      bt: 100,
-      cont: 100,
-      sub: false,
-      briVal: 100,
-      conVal: 100,
-      value: '',
+            previewImage: "",
+            viewTools: false,
+            drawer: false,
+            group: null,
+            bt: 100,
+            cont: 100,
+            sub: false,
+            briVal: 100,
+            conVal: 100,
+            value: '',
     }
   },
   components: {
@@ -118,13 +119,21 @@ export default {
       this.previewImage = name;
       this.sub = true;
     },
+    bright(value) {
+      this.bt = value * 2 + 20;
+      console.log(value * 2 + 20);
+    },
+    contrast(value) {
+      this.cont = value * 2 + 20;
+      console.log(value * 2 + 20);
+    }
   },
   watch: {
     group() {
       this.drawer = false
     },
   },
-  emits:['close'],
+  emits: ['rsltPrnt'],
   mixins: [bargrph],
 }
 </script>

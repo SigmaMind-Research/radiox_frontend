@@ -47,7 +47,4 @@ export default {
 }
 </script>
 <style>
-#myFileInput {
-    display: none;
-}
 </style>

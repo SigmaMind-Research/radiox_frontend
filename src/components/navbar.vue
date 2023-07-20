@@ -9,10 +9,11 @@
         <template v-slot:activator="{ props }">
           <v-btn class="icon-ele" v-bind="props"> <v-icon icon="mdi-account" /></v-btn>
         </template>
-        <v-list>
-          <v-list-item v-for="info in accoundinfo" :key="info" link>
-            <v-list-item-title>{{ info }}</v-list-item-title>
+          <v-list>
+              <v-list-item v-for="info in accoundinfo" :key="info" router :to="info.route" link>
+            <v-list-item-title >{{ info.name }}</v-list-item-title>
           </v-list-item>
+          <v-list-item @click=signOut> Sign out </v-list-item>
         </v-list>
       </v-menu>
     </template>
@@ -20,13 +21,53 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  data() {
-    return {
-      accoundinfo: ['Profile', 'Settings', 'Help', 'Send feedback', 'Sign out'],
-      mode: false,
-    }
+data(){
+  return{
+    accoundinfo:[
+      {
+        name: 'Profile',
+        route:{name:'profile'}
+      },
+      {
+        name: 'Settings',
+        route: {name:'settings'}
+      },
+      {
+        name: 'Support',
+        route: { name: 'support' }
+      },
+      {
+        name: 'Send feedback',
+        route: { name: 'feedback' }
+      },       
+    ],
+     mode: false,
   }
+},
+methods:{
+  signOut(){
+
+    const head = {
+      "content-type":'any',
+      "Authorization": `Bearer ${localStorage.getItem('token1')}` 
+    }
+       axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/logout',"",
+       {
+         headers: head
+        }
+      )
+    .then(
+      localStorage.removeItem('token1'),
+      this.$router.push({name:'login'})
+  )
+  .catch((error) =>{
+    console.log(error);
+  })
+  }
+}
 }
 </script>
 
