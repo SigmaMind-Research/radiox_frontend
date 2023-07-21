@@ -1,8 +1,13 @@
 export default{
-
+    data(){
+      return{
+        imageData:null
+      }
+    },
     methods: {
         async uploadImage(e) {
             const image = e.target.files[0];
+            this.imageData= e.target.files[0]
             const reader = new FileReader();
             reader.readAsDataURL(image);
             
