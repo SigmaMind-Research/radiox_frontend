@@ -3,10 +3,9 @@
         <v-card>
             <v-layout>
                 <Navbar />
-                <Main @rsltPrnt="drawer = true"/>
+                <Main />
             </v-layout>
             <v-navigation-drawer v-model="drawer"  location="bottom" class="h-auto" temporary>
-                  <result></result>
             </v-navigation-drawer>
         </v-card>
     </v-app>
@@ -15,7 +14,6 @@
 <script>
 import Navbar from '../components/navbar.vue'
 import Main from '../components/main.vue'
-// import result from '../components/result.vue'
 
 import apexchart from "vue3-apexcharts";
 import bargrph from '../mixins/bargrph';
@@ -44,7 +42,6 @@ export default {
 
         else{
         const head = {
-            "content-type": 'multipart/form-data; boundary=<calculated when request is sent>',
             "Authorization": `Bearer ${localStorage.getItem('token1')}`
         }
 
@@ -53,7 +50,7 @@ export default {
             localStorage.removeItem("token0")
             localStorage.removeItem("expire")
 
-            axios.post("https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/tokens","",{ headers: head})
+            axios.post(import.meta.env.VITE_BASE_URL + "auth/tokens","",{ headers: head})
             .then(response => {
                 if(response.data.status == "success"){
                     localStorage.setItem("token0",response.data.Authorization[0])
@@ -72,7 +69,7 @@ export default {
                     "content-type": 'any',
                     "Authorization": authTkn
                 } 
-                axios.post("https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/splashscreen","",{ headers: head0 })
+                axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen","",{ headers: head0 })
                 .then(response =>{
                     if(response.data.status == "success"){
                         this.$router.push({ name: 'home' })
@@ -87,7 +84,7 @@ export default {
                     this.$router.push({ name: 'login' })
                     console.log('error is : ' + error);
                 });    
-        }         
+            }         
         }
     },
     watch: {

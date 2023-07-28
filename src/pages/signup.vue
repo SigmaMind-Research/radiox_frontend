@@ -45,7 +45,7 @@ export default {
   methods:{
     async signUp(){
           this.isLoading=true;
-      await axios.post('https://radiox.onrender.com/user/register',this.signupData)
+      await axios.post(import.meta.env.VITE_BASE_URL + 'user/register',this.signupData)
          .then((response) =>{
         if(response.status==201)
         {

@@ -1,25 +1,25 @@
 <template>
     <v-main style="min-height:100vh; display: flex;" color="#252529">
-            <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
+      <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
           class="samimg">
-      <v-btn id="subb" variant="tonal" @click.stop="drawer = true" v-show="sub" location="bottom"
-        color="primary">Submit</v-btn>
+      <v-btn id="subb" variant="tonal" @click.stop=submitFun v-show="sub" location="bottom"
+          color="primary">Submit</v-btn>
     </v-main>
 
-    <Rightbar @setImg="imgset" @rslt="$emit('rsltPrnt')" />
+    <Rightbar @setImg="imgset"/>
 
   <v-navigation-drawer color="#1e1e20" width="420">
       <v-list>
         <v-list-item>
-          <v-card id="card" variant="toned">
+          <v-card id="card" variant="tonal">
             <h2 class="toolbr">Toolbar</h2>
           </v-card>
-          <v-card id="card" title="Brightness" variant="toned">
+          <v-card id="card" title="Brightness" variant="tonal">
             <label id="lab" for="briVal" location="">{{ (briVal - 100).toFixed(1) }}</label>
             <v-slider v-model="briVal" :max="200" track-color="white" color="white"
               class="slid"></v-slider>
           </v-card>
-          <v-card id="card" title="Contrast" variant="toned">
+          <v-card id="card" title="Contrast" variant="tonal">
             <label id="lab" for="briVal" location="">{{ (conVal - 100).toFixed(1) }}</label>
             <v-slider v-model="conVal" :max="200" track-color="white" color="white"
               class="slid"></v-slider>
@@ -38,7 +38,7 @@
   </v-navigation-drawer>
 
   <div v-if="!viewTools">
-    <Footer id="footerset" @close="viewTools = true" @setImg="imgset" />
+    <Footer ref="submitApiFun" id="footerset" @close="viewTools = true" @setImg="imgset" />
   </div>
   <div v-if="viewTools" id="footerset">
     <v-bottom-navigation v-model="value" color="blue" class="overflow-visible" style="height: 56px;" grow>
@@ -93,31 +93,27 @@ import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
 
 import apexchart from "vue3-apexcharts";
-import bargrph from '../mixins/bargrph';
+import bargrph from "../mixins/bargrph";
 export default {
   data() {
     return {
-            previewImage: "",
-            viewTools: false,
-            drawer: false,
-            group: null,
-            bt: 100,
-            cont: 100,
-            sub: false,
-            briVal: 100,
-            conVal: 100,
-            value: '',
+      previewImage: '',
+      viewTools: false,
+      drawer: false,
+      group: null,
+      bt: 100,
+      cont: 100,
+      sub: false,
+      briVal: 100,
+      conVal: 100,
+      value: '',
     }
-  },
-  components: {
-    Rightbar,
-    Footer,
-    apexchart
   },
   methods: {
     imgset(name) {
       this.previewImage = name;
       this.sub = true;
+
     },
     bright(value) {
       this.bt = value * 2 + 20;
@@ -126,15 +122,24 @@ export default {
     contrast(value) {
       this.cont = value * 2 + 20;
       console.log(value * 2 + 20);
+    },
+    submitFun(){
+      this.$refs.submitApiFun.submitApi();
+      this.drawer = true;
+
     }
+  },
+    components: {
+    Rightbar,
+    Footer,
+    apexchart
   },
   watch: {
     group() {
       this.drawer = false
     },
   },
-  emits: ['rsltPrnt'],
-  mixins: [bargrph],
+  mixins: [bargrph]
 }
 </script>
 <style>

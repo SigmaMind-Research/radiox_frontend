@@ -14,7 +14,7 @@
                 <template v-slot:activator>
                     <v-btn class="ma-2" onclick="document.getElementById('myFileInput').click()" @change=uploadImage>
                         <v-icon icon="mdi-plus-circle"></v-icon>
-                        <input type="file" id="myFileInput" />
+                        <input type="file" accept="image/png, image/jpeg, image/dcm" id="myFileInput" />
                         Add
                     </v-btn>
                 </template>
@@ -36,10 +36,33 @@
 
 <script>
 import upload from '../mixins/upload';
+
+import axios from 'axios';
 export default {
     data() {
         return {
             value: '',
+        }
+    },
+    props:['sub'],
+    methods:{
+            submitApi() {
+            const formimg = new FormData();
+            console.log(this.imageData);
+            formimg.append('xray_image', this.imageData);
+
+            const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
+            console.log(authTkn);
+
+            const head0 = {
+                "Authorization": authTkn
+            };
+
+            axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
+                .then(response => {
+                    console.log(response);
+                })
+            this.drawer = true;
         }
     },
     emits: ['close', 'setImg'],
