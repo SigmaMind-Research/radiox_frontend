@@ -4,7 +4,7 @@
       <v-list-item>
         <v-card id="card" title="Upload image" text="Please upload your x-ray image here.">
           <div class="upload">
-            <v-file-input accept="image/png, image/jpeg" @change="uploadImage"
+            <v-file-input accept="image/png, image/jpeg, image/dcm" @change="uploadImage"
               placeholder="upload x-ray ...." prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
             <v-card-actions>
               <v-btn id="subbtn" variant="tonal" @click="submitApi">Submit</v-btn>
@@ -55,7 +55,7 @@ export default {
         "Authorization": authTkn
       };
       
-      axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/',formimg,{headers:head0})
+      axios.post(import.meta.env.VITE_BASE_URL + 'home/',formimg,{headers:head0})
       .then(response => {
         console.log(response);
       })

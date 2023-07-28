@@ -14,7 +14,7 @@
                 <template v-slot:activator>
                     <v-btn class="ma-2" onclick="document.getElementById('myFileInput').click()" @change=uploadImage>
                         <v-icon icon="mdi-plus-circle"></v-icon>
-                        <input type="file" accept="image/png, image/jpeg" id="myFileInput" />
+                        <input type="file" accept="image/png, image/jpeg, image/dcm" id="myFileInput" />
                         Add
                     </v-btn>
                 </template>
@@ -58,7 +58,7 @@ export default {
                 "Authorization": authTkn
             };
 
-            axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/', formimg, { headers: head0 })
+            axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
                 .then(response => {
                     console.log(response);
                 })

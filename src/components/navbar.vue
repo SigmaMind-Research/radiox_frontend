@@ -54,7 +54,7 @@ methods:{
       "content-type":'any',
       "Authorization": `Bearer ${localStorage.getItem('token1')}` 
     }
-       axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/logout',"",
+       axios.post(import.meta.env.VITE_BASE_URL + 'auth/logout',"",
        {
          headers: head
         }

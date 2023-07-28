@@ -42,7 +42,7 @@ export default {
     async userLogin(){
       this.isLoading = true;
       localStorage.clear()
-       axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/login',this.loginData)
+       axios.post(import.meta.env.VITE_BASE_URL + 'auth/login',this.loginData)
       .then((response) =>{
         if(response.status==200){  // or 201
           this.$router.push({ name: 'home' })

@@ -50,7 +50,7 @@ export default {
             localStorage.removeItem("token0")
             localStorage.removeItem("expire")
 
-            axios.post("https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/tokens","",{ headers: head})
+            axios.post(import.meta.env.VITE_BASE_URL + "auth/tokens","",{ headers: head})
             .then(response => {
                 if(response.data.status == "success"){
                     localStorage.setItem("token0",response.data.Authorization[0])
@@ -69,7 +69,7 @@ export default {
                     "content-type": 'any',
                     "Authorization": authTkn
                 } 
-                axios.post("https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/auth/splashscreen","",{ headers: head0 })
+                axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen","",{ headers: head0 })
                 .then(response =>{
                     if(response.data.status == "success"){
                         this.$router.push({ name: 'home' })
