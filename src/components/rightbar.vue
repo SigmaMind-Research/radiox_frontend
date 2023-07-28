@@ -4,7 +4,7 @@
       <v-list-item>
         <v-card id="card" title="Upload image" text="Please upload your x-ray image here.">
           <div class="upload">
-            <v-file-input accept="image/png, image/jpeg, image/bmp" @change="uploadImage($event)"
+            <v-file-input accept="image/png, image/jpeg, image/bmp" @change="uploadImage"
               placeholder="upload x-ray ...." prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
             <v-card-actions>
               <v-btn id="subbtn" variant="tonal" @click="submitApi">Submit</v-btn>
@@ -33,7 +33,7 @@
 <script>
 import apexchart from "vue3-apexcharts";
 import bargrph from "../mixins/bargrph";
-import upload from '../mixins/upload'
+import upload from "../mixins/upload";
 
 import axios from 'axios';
 export default {
@@ -50,12 +50,11 @@ export default {
       formimg.append('xray_image',this.imageData);
       
       const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
-      console.log(authTkn);
       
       const head0 = {
         "Authorization": authTkn
       };
-
+      
       axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/',formimg,{headers:head0})
       .then(response => {
         console.log(response);

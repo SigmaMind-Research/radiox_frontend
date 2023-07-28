@@ -3,10 +3,9 @@
         <v-card>
             <v-layout>
                 <Navbar />
-                <Main @rsltPrnt="drawer = true"/>
+                <Main />
             </v-layout>
             <v-navigation-drawer v-model="drawer"  location="bottom" class="h-auto" temporary>
-                  <result></result>
             </v-navigation-drawer>
         </v-card>
     </v-app>
@@ -15,7 +14,6 @@
 <script>
 import Navbar from '../components/navbar.vue'
 import Main from '../components/main.vue'
-// import result from '../components/result.vue'
 
 import apexchart from "vue3-apexcharts";
 import bargrph from '../mixins/bargrph';
@@ -44,7 +42,6 @@ export default {
 
         else{
         const head = {
-            "content-type": 'multipart/form-data; boundary=<calculated when request is sent>',
             "Authorization": `Bearer ${localStorage.getItem('token1')}`
         }
 
@@ -87,7 +84,7 @@ export default {
                     this.$router.push({ name: 'login' })
                     console.log('error is : ' + error);
                 });    
-        }         
+            }         
         }
     },
     watch: {

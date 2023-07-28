@@ -36,10 +36,33 @@
 
 <script>
 import upload from '../mixins/upload';
+
+import axios from 'axios';
 export default {
     data() {
         return {
             value: '',
+        }
+    },
+    props:['sub'],
+    methods:{
+            submitApi() {
+            const formimg = new FormData();
+            console.log(this.imageData);
+            formimg.append('xray_image', this.imageData);
+
+            const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
+            console.log(authTkn);
+
+            const head0 = {
+                "Authorization": authTkn
+            };
+
+            axios.post('https://radiox-api.wonderfulsea-1d4ac329.southeastasia.azurecontainerapps.io/home/', formimg, { headers: head0 })
+                .then(response => {
+                    console.log(response);
+                })
+            this.drawer = true;
         }
     },
     emits: ['close', 'setImg'],
