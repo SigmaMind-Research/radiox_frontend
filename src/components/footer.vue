@@ -14,7 +14,7 @@
                 <template v-slot:activator>
                     <v-btn class="ma-2" onclick="document.getElementById('myFileInput').click()" @change=uploadImage>
                         <v-icon icon="mdi-plus-circle"></v-icon>
-                        <input type="file" id="myFileInput" />
+                        <input type="file" accept="image/png, image/jpeg" id="myFileInput" />
                         Add
                     </v-btn>
                 </template>
