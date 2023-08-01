@@ -34,8 +34,8 @@
 import apexchart from "vue3-apexcharts";
 import bargrph from "../mixins/bargrph";
 import upload from "../mixins/upload";
+import submit from "../mixins/submit"
 
-import axios from 'axios';
 export default {
   data() {
     return {
@@ -44,24 +44,7 @@ export default {
       group: null,
     }
   },
-  methods:{
-    submitApi(){
-      const formimg = new FormData();
-      formimg.append('xray_image',this.imageData);
-      
-      const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
-      
-      const head0 = {
-        "Authorization": authTkn
-      };
-      
-      axios.post(import.meta.env.VITE_BASE_URL + 'home/',formimg,{headers:head0})
-      .then(response => {
-        console.log(response);
-      })
-      this.drawer = true;
-    }
-  },
+  inject:["imgD"],
   components: {
     apexchart
   },
@@ -71,7 +54,7 @@ export default {
     },
   },
   emits: ['setImg'],
-  mixins: [bargrph, upload],
+  mixins: [bargrph, upload,submit],
 }
 
 </script>

@@ -14,12 +14,12 @@
           <v-card id="card" variant="tonal">
             <h2 class="toolbr">Toolbar</h2>
           </v-card>
-          <v-card id="card" title="Brightness" variant="tonal">
+          <v-card id="card" title="Brightness" >
             <label id="lab" for="briVal" location="">{{ (briVal - 100).toFixed(1) }}</label>
             <v-slider v-model="briVal" :max="200" track-color="white" color="white"
               class="slid"></v-slider>
           </v-card>
-          <v-card id="card" title="Contrast" variant="tonal">
+          <v-card id="card" title="Contrast">
             <label id="lab" for="briVal" location="">{{ (conVal - 100).toFixed(1) }}</label>
             <v-slider v-model="conVal" :max="200" track-color="white" color="white"
               class="slid"></v-slider>
@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import {computed} from 'vue'
 import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
 
@@ -98,6 +99,7 @@ export default {
   data() {
     return {
       previewImage: '',
+      imageData:null,
       viewTools: false,
       drawer: false,
       group: null,
@@ -109,24 +111,21 @@ export default {
       value: '',
     }
   },
+  provide(){
+    return{
+      imgD:computed(() => this.imageData)
+    }
+  },
   methods: {
-    imgset(name) {
+    imgset({name,nameData}) {
       this.previewImage = name;
+      this.imageData = nameData;
       this.sub = true;
 
-    },
-    bright(value) {
-      this.bt = value * 2 + 20;
-      console.log(value * 2 + 20);
-    },
-    contrast(value) {
-      this.cont = value * 2 + 20;
-      console.log(value * 2 + 20);
     },
     submitFun(){
       this.$refs.submitApiFun.submitApi();
       this.drawer = true;
-
     }
   },
     components: {
