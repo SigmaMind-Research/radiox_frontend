@@ -34,58 +34,58 @@ export default {
     },
     beforeCreate(){   
 
-        const check = localStorage.getItem("token0")
-        if(check==null){
-            console.log(check);
-            this.$router.push({name:'login'})
-        }
+        // const check = localStorage.getItem("token0")
+        // if(check==null){
+        //     console.log(check);
+        //     this.$router.push({name:'login'})
+        // }
 
-        else{
-        const head = {
-            "Authorization": `Bearer ${localStorage.getItem('token1')}`
-        }
+        // else{
+        // const head = {
+        //     "Authorization": `Bearer ${localStorage.getItem('token1')}`
+        // }
 
-        const exp = localStorage.getItem("expire")
-        if (Date.now() > exp) {
-            localStorage.removeItem("token0")
-            localStorage.removeItem("expire")
+        // const exp = localStorage.getItem("expire")
+        // if (Date.now() > exp) {
+        //     localStorage.removeItem("token0")
+        //     localStorage.removeItem("expire")
 
-            axios.post(import.meta.env.VITE_BASE_URL + "auth/tokens","",{ headers: head})
-            .then(response => {
-                if(response.data.status == "success"){
-                    localStorage.setItem("token0",response.data.Authorization[0])
-                    localStorage.setItem("expire", Date.now()+10000)
-                    this.$router.push({ name: 'home' })
-                }
-                else{
-                    localStorage.removeItem("token1")
-                    this.$router.push({ name: 'login' })
-                }
-            })
-        }
-        else{
-            const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
-                    const head0 = {
-                    "content-type": 'any',
-                    "Authorization": authTkn
-                } 
-                axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen","",{ headers: head0 })
-                .then(response =>{
-                    if(response.data.status == "success"){
-                        this.$router.push({ name: 'home' })
-                        console.log(response.status);
-                    }
-                    else{
-                        this.$router.push({name:'login'})
-                    }
-                })
-                .catch(error =>{
-                    console.log();
-                    this.$router.push({ name: 'login' })
-                    console.log('error is : ' + error);
-                });    
-            }         
-        }
+        //     axios.post(import.meta.env.VITE_BASE_URL + "auth/tokens","",{ headers: head})
+        //     .then(response => {
+        //         if(response.data.status == "success"){
+        //             localStorage.setItem("token0",response.data.Authorization[0])
+        //             localStorage.setItem("expire", Date.now()+10000)
+        //             this.$router.push({ name: 'home' })
+        //         }
+        //         else{
+        //             localStorage.removeItem("token1")
+        //             this.$router.push({ name: 'login' })
+        //         }
+        //     })
+        // }
+        // else{
+        //     const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
+        //             const head0 = {
+        //             "content-type": 'any',
+        //             "Authorization": authTkn
+        //         } 
+        //         axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen","",{ headers: head0 })
+        //         .then(response =>{
+        //             if(response.data.status == "success"){
+        //                 this.$router.push({ name: 'home' })
+        //                 console.log(response.status);
+        //             }
+        //             else{
+        //                 this.$router.push({name:'login'})
+        //             }
+        //         })
+        //         .catch(error =>{
+        //             console.log();
+        //             this.$router.push({ name: 'login' })
+        //             console.log('error is : ' + error);
+        //         });    
+        //     }         
+        // }
     },
     watch: {
         group() {

@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar :elevation="2" color="#252529" class="nav">
+  <v-app-bar :elevation="2" color="#111112" class="nav">
     <h1>
       <button>RADIOX</button>
     </h1>

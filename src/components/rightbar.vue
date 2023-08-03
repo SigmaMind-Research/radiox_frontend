@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer width="420" color="#1e1e20" location="right" class="leftside">
+  <v-navigation-drawer width="420" color="#111112" location="right" class="leftside">
     <v-list>
       <v-list-item>
         <v-card id="card" title="Upload image" text="Please upload your x-ray image here.">

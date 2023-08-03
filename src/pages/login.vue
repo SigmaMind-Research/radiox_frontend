@@ -1,25 +1,31 @@
 <template>
   <div class="login__box">
-    <v-card class="login__card" :loading="isLoading" location="center"  text="" variant="tonal">
+    <v-card class="login__card bck-color" :loading="isLoading" location="center"  text="">
       <h1>Log in</h1>
-        <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="userLogin">
+      <v-sheet width="300" class="mx-auto">
+      <v-form fast-fail @submit.prevent="userLogin" class="bck-color">
           <label v-if="err" for="error">email or password does not match.</label>
         <v-text-field
+          id="field"
           type="email"
           v-model="loginData.email"
-          label="email"
+          placeholder="Email"
+          variant="underlined"
           ></v-text-field>
         <v-text-field
+          id="field"
           type ="password"
           v-model="loginData.password"
-          label="Password"
+          placeholder="Password"
+          variant="underlined"
         ></v-text-field>
-
-        <v-btn type="submit" block class="mt-2">Submit</v-btn>
+        <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
       </v-form>
     </v-sheet>
-      <RouterLink :to="{name:'signup'}"><h3>sign up</h3></RouterLink>
+    <div id="sign-div">
+      <label for="signup">Don't have an account?</label>
+      <RouterLink :to="{name:'signup'}"><h4>sign up</h4></RouterLink>
+    </div>
     </v-card>
   </div>
 </template>
@@ -72,21 +78,46 @@ export default {
 </script>
 
 <style>
-.login__card{
-  /* align-self: center; */
-  width:500px;
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+  .login__card{
+  border-radius: 15px;
+  width:416px;
   margin-top: 24%;
 }
+.bck-color{
+  background-color:#37373d;
+}
 
-  h1{
-    text-align: center;
-    margin: 16px;
-  }
+#field{
+  text-align: center;
+}
 
-h3{
+h1{
+  font-family: 'Ubuntu', sans-serif;
+  color:white;
+  text-align: center;
+  margin: 16px;
+}
+
+h4{
+  padding:0 5px;
+  color: #D7BBF5;
+  text-transform: capitalize;
+}
+#sign-div{
+  display:flex;
+  justify-content: center;
   margin-top: 16px;
   margin-right: 16px; 
   margin-bottom: 8px;
-  text-align: end;
+  padding:20px;
+  color:white;
+  font-size: 0.9rem;
+}
+#sub{
+  background-color: #8758c0;
+  margin:20px 0;
 }
 </style>

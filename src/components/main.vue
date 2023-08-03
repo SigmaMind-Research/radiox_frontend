@@ -1,5 +1,5 @@
 <template>
-    <v-main style="min-height:100vh; display: flex;" color="#252529">
+    <v-main style="min-height:100vh; display: flex; background-color: black;">
       <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
           class="samimg">
       <v-btn id="subb" variant="tonal" @click.stop=submitFun v-show="sub" location="bottom"
@@ -8,21 +8,29 @@
 
     <Rightbar @setImg="imgset"/>
 
-  <v-navigation-drawer color="#1e1e20" width="420">
+  <v-navigation-drawer color="#111112" width="420">
       <v-list>
         <v-list-item>
-          <v-card id="card" variant="tonal">
+          <v-card id="toolContainer">
+            <v-card id="card">
             <h2 class="toolbr">Toolbar</h2>
-          </v-card>
-          <v-card id="card" title="Brightness" >
-            <label id="lab" for="briVal" location="">{{ (briVal - 100).toFixed(1) }}</label>
-            <v-slider v-model="briVal" :max="200" track-color="white" color="white"
+            </v-card>
+            <v-card class="jaidev">
+              <div id="tool-label" > 
+                <label for="brightness">Brightness</label>
+                <label id="lab" for="briVal" location="">{{ (briVal - 100).toFixed(1) }}</label>
+              </div>
+                <v-slider v-model="briVal" :max="200" track-color="white" color="white"
+                class="slid"></v-slider>
+            </v-card>
+            <v-card class="jaidev">
+              <div id="tool-label">
+                <label for="contrast">Contrast</label>
+                <label id="lab" for="briVal" location="">{{ (conVal - 100).toFixed(1) }}</label>
+              </div>
+                <v-slider v-model="conVal" :max="200" track-color="white" color="white"
               class="slid"></v-slider>
-          </v-card>
-          <v-card id="card" title="Contrast">
-            <label id="lab" for="briVal" location="">{{ (conVal - 100).toFixed(1) }}</label>
-            <v-slider v-model="conVal" :max="200" track-color="white" color="white"
-              class="slid"></v-slider>
+            </v-card>
           </v-card>
         </v-list-item>
       </v-list>
@@ -162,23 +170,41 @@ export default {
 
 #card {
   color: white;
-  background-color: #323643;
+  background-color: #434242;
   margin: 0px 5px 22px;
+  border-radius: 12px;
 }
-
+#card .toolbr{
+  background-color:#111112;
+}
+#toolContainer{
+  padding: 20px;
+  border-radius:20px;
+}
+#tool-label{
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
+  display:flex;
+  padding: 20px 30px ;
+  justify-content: space-between;
+}
 .slid {
-  padding: 30px 30px;
+  padding: 15px 25px;
 }
-
+.jaidev{
+  border:none;
+  box-shadow: none;
+}
 .toolbr {
   text-align: center;
   padding: 6px;
 }
 
-#lab {
+/* #lab {
   margin-left: 80%;
 
-}
+} */
 @media screen and (min-width:1280px) {
   #footerset {
     display: none;

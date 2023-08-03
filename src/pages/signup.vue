@@ -1,29 +1,36 @@
 <template>
   <div class="signup__box">
-    <v-card class="signup__card" location="center" :loading="isLoading"  text="" variant="tonal">
-      <h1>Sign-up</h1>
+    <v-card class="signup__card bck-color" location="center" :loading="isLoading"  text="">
+      <h1>Sign Up</h1>
         <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="signUp">
+      <v-form fast-fail @submit.prevent="signUp" class="bck-color">
         <v-text-field
+          id="field"
           type="email"
           v-model="signupData.email"
-          label="email"
+          placeholder="Email"
+          variant="underlined"
         ></v-text-field>
-
         <v-text-field
+            id="field"
             v-model="signupData.username"
-            label="username"
+            placeholder="Username"
+            variant="underlined"
           ></v-text-field>
-
         <v-text-field
+          id="field"
           v-model="signupData.password"
-          label="Password"
+          placeholder="Password"
+          variant="underlined"
         ></v-text-field>
 
-        <v-btn type="submit" block class="mt-2">Submit</v-btn>
+        <v-btn id="sub" type="submit" block class="mt-2">Submit</v-btn>
       </v-form>
     </v-sheet>
-      <RouterLink :to="{name:'login'}"><h3>Log in</h3></RouterLink>
+    <div id="log-div">
+      <label for="signup">Already have an account?</label>
+      <RouterLink :to="{name:'login'}"><h4>Log in</h4></RouterLink>
+    </div>
     </v-card>
   </div>
 </template>
@@ -62,21 +69,44 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 .signup__card{
-  /* align-self: center; */
-  width:500px;
+  border-radius: 15px;
+  width:425px;
   margin-top: 24%;
 }
 
+.bck-color{
+  background-color: #37373d;
+}
+#field{
+  text-align: center;
+}
   h1{
+    font-family: 'Ubuntu', sans-serif;
+    color:white;
     text-align: center;
     margin: 16px;
   }
 
-h3{
-  margin-top: 16px;
+h4{
+  padding:0 5px;
+  color: #D7BBF5;
+  text-transform: capitalize;
+}
+
+#log-div{
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
   margin-right: 16px; 
   margin-bottom: 8px;
-  text-align: end;
+  padding:20px;
+  color:white;
+  font-size: 0.9rem;
+}
+#sub{
+  background-color: #8658c0;
 }
 </style>
