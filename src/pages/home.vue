@@ -2,7 +2,7 @@
     <v-app>
         <v-card>
             <v-layout>
-                <v-card
+                <v-overlay
                     :model-value="overlay"
                     class="align-center justify-center"
                     style="background-color: #141E46;"
@@ -12,7 +12,7 @@
                         indeterminate
                         size="64"
                     ></v-progress-circular>
-                </v-card>
+                </v-overlay>
                 <Navbar />
                 <Main />
             </v-layout>
@@ -38,7 +38,7 @@ export default {
         Navbar,
         Main,
     },
-    beforeCreate(){   
+    mounted(){   
 
         const check = localStorage.getItem("token1")
         if(check==null){
