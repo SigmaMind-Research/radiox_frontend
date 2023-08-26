@@ -17,11 +17,11 @@
 
     <v-navigation-drawer v-model="drawer"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
              <v-sheet class="d-flex bg-surface-variant">
-        <v-sheet width="35%">
+        <v-sheet width="50%">
           <img :src="previewImage" alt="" class="samimg h-auto ">
         </v-sheet>
-        <v-sheet width="65%">
-          <apexchart type="bar" height="750" :options="chartOptions" :series="series"></apexchart>
+        <v-sheet width="50%">
+            hello world
         </v-sheet>
       </v-sheet>
       <div class="">
@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import apexchart from "vue3-apexcharts";
-import bargrph from "../mixins/bargrph";
 import upload from "../mixins/upload";
 import submit from "../mixins/submit"
 
@@ -45,16 +43,13 @@ export default {
     }
   },
   inject:["imgD"],
-  components: {
-    apexchart
-  },
   watch: {
     group() {
       this.drawer = false
     },
   },
   emits: ['setImg'],
-  mixins: [bargrph, upload,submit],
+  mixins: [upload,submit],
 }
 
 </script>

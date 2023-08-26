@@ -1,7 +1,7 @@
 <template>
   <v-app-bar :elevation="2" color="#111112" class="nav">
     <h1>
-      <button>RADIOX</button>
+      <router-link to="/">RADIOX</router-link>
     </h1>
     <template v-slot:append>
       <v-btn class="icon-ele"> <v-icon icon="mdi-help-circle" /></v-btn>

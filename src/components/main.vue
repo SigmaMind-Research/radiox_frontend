@@ -15,7 +15,7 @@
             <v-card id="card">
             <h2 class="toolbr">Toolbar</h2>
             </v-card>
-            <v-card class="jaidev">
+            <v-card class="card">
               <div id="tool-label" > 
                 <label for="brightness">Brightness</label>
                 <label id="lab" for="briVal" location="">{{ (briVal - 100).toFixed(1) }}</label>
@@ -23,7 +23,7 @@
                 <v-slider v-model="briVal" :max="200" track-color="white" color="white"
                 class="slid"></v-slider>
             </v-card>
-            <v-card class="jaidev">
+            <v-card class="card">
               <div id="tool-label">
                 <label for="contrast">Contrast</label>
                 <label id="lab" for="briVal" location="">{{ (conVal - 100).toFixed(1) }}</label>
@@ -39,7 +39,7 @@
   <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
     <v-container class="info">
       <div id="chart">
-        <apexchart type="bar" height="550" :options="chartOptions" :series="series"></apexchart>
+        
       </div>
     </v-container>
     <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
@@ -100,9 +100,6 @@
 import {computed} from 'vue'
 import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
-
-import apexchart from "vue3-apexcharts";
-import bargrph from "../mixins/bargrph";
 export default {
   data() {
     return {
@@ -139,14 +136,12 @@ export default {
     components: {
     Rightbar,
     Footer,
-    apexchart
   },
   watch: {
     group() {
       this.drawer = false
     },
   },
-  mixins: [bargrph]
 }
 </script>
 <style>
@@ -169,8 +164,8 @@ export default {
 }
 
 #card {
-  color: white;
-  background-color: #434242;
+  /* color: white; */
+  /* background-color: #434242; */
   margin: 0px 5px 22px;
   border-radius: 12px;
 }

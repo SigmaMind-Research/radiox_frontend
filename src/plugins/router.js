@@ -47,7 +47,7 @@ const router = createRouter({
             component: feedbackView
         },
         {
-            path: '/*',
+            path: '/:pathMatch(.*)*',
             name: 'nopage',
             component: noView
         }

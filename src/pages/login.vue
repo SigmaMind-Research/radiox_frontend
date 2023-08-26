@@ -48,7 +48,7 @@ export default {
     async userLogin(){
       this.isLoading = true;
       localStorage.clear()
-       axios.post(import.meta.env.VITE_BASE_URL + 'auth/login',this.loginData)
+       axios.post(import.meta.env.VITE_BASE_URL + 'auth/login/',this.loginData)
       .then((response) =>{
         if(response.status==200){  // or 201
           this.$router.push({ name: 'home' })
@@ -58,11 +58,7 @@ export default {
           localStorage.setItem('token0',key0)
           localStorage.setItem('token1', key1)
           localStorage.setItem('expire',exp)
-          localStorage.setItem('test','"jaysairwa"')
-          console.log(localStorage.getItem('test'));
-          console.log(localStorage.getItem('token0'));
         }
-        console.log("message is:" + response.status);
       })
       .catch(error => {
         this.err=true;
