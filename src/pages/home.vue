@@ -2,7 +2,7 @@
     <v-app>
         <v-card>
             <v-layout>
-                <v-overlay
+                <v-card
                     :model-value="overlay"
                     class="align-center justify-center"
                     style="background-color: #141E46;"
@@ -12,7 +12,7 @@
                         indeterminate
                         size="64"
                     ></v-progress-circular>
-                </v-overlay>
+                </v-card>
                 <Navbar />
                 <Main />
             </v-layout>
@@ -38,11 +38,10 @@ export default {
         Navbar,
         Main,
     },
-    mounted(){   
+    beforeCreate(){   
 
-        const check = localStorage.getItem("token0")
+        const check = localStorage.getItem("token1")
         if(check==null){
-            console.log(check);
             this.$router.push({name:'login'})
         }
 
