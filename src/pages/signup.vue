@@ -69,9 +69,11 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 .signup__card{
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 15px;
   border-radius: 15px;
   width:425px;
   margin-top: 24%;
@@ -84,7 +86,6 @@ export default {
   text-align: center;
 }
   h1{
-    font-family: 'Ubuntu', sans-serif;
     color:white;
     text-align: center;
     margin: 16px;

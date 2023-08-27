@@ -5,6 +5,7 @@
       <v-sheet width="300" class="mx-auto">
       <v-form fast-fail @submit.prevent="userLogin" class="bck-color">
           <label v-if="err" for="error">email or password does not match.</label>
+
         <v-text-field
           id="field"
           type="email"
@@ -20,6 +21,9 @@
           variant="underlined"
         ></v-text-field>
         <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
+        <hr class="hr-text" data-content="OR">
+        <v-btn id="google-btn" type="submit" block class="mt-2"><img src="public/google.png">Sign in with Google</v-btn>
+
       </v-form>
     </v-sheet>
     <div id="sign-div">
@@ -75,9 +79,10 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-  .login__card{
+.login__card{
+  font-family: 'Open Sans', sans-serif;  
   border-radius: 15px;
   width:416px;
   margin-top: 24%;
@@ -86,12 +91,57 @@ export default {
   background-color:#37373d;
 }
 
+/* hr{
+  width:80%;
+  margin-left: 30px;
+  margin-bottom:20px;
+} */
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  margin:20px 0;
+}
+
+.hr-text::before {
+    content: '';
+    background: linear-gradient(to right, transparent, white, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  
+  .hr-text::after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+    padding: 0 .5em;
+    line-height: 1.5em;
+    color: rgb(218, 216, 216);
+    background-color: #37373d;
+  }
+#google-btn{
+  color:black;
+  background-color:#e3dcdc;
+  margin:20px 0;
+}
+img{
+  padding-right: 12px;
+}
+
 #field{
   text-align: center;
 }
 
 h1{
-  font-family: 'Ubuntu', sans-serif;
   color:white;
   text-align: center;
   margin: 16px;
