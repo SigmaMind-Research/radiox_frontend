@@ -20,11 +20,10 @@
           placeholder="Password"
           variant="underlined"
         ></v-text-field>
-        <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
-        <hr class="hr-text" data-content="OR">
-        <v-btn id="google-btn" type="submit" block class="mt-2"><img src="public/google.png">Sign in with Google</v-btn>
-
+        <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>    
       </v-form>
+      <hr class="hr-text" data-content="OR">
+      <v-btn id="google-btn" type="submit" block class="mt-2"><img src="/google.png">Sign in with Google</v-btn>
     </v-sheet>
     <div id="sign-div">
       <label for="signup">Don't have an account?</label>
@@ -81,6 +80,10 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
+.v-sheet{
+  background:none;
+}
+
 .login__card{
   font-family: 'Open Sans', sans-serif;  
   border-radius: 15px;
@@ -91,11 +94,6 @@ export default {
   background-color:#37373d;
 }
 
-/* hr{
-  width:80%;
-  margin-left: 30px;
-  margin-bottom:20px;
-} */
 .hr-text {
   line-height: 1em;
   position: relative;
@@ -116,7 +114,7 @@ export default {
     top: 50%;
     width: 100%;
     height: 1px;
-  }
+}
   
   .hr-text::after {
     content: attr(data-content);
@@ -127,12 +125,14 @@ export default {
     line-height: 1.5em;
     color: rgb(218, 216, 216);
     background-color: #37373d;
-  }
+}
+
 #google-btn{
   color:black;
   background-color:#e3dcdc;
   margin:20px 0;
 }
+
 img{
   padding-right: 12px;
 }
