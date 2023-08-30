@@ -16,12 +16,16 @@
   </v-navigation-drawer>
 
     <v-navigation-drawer v-model="drawer"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
-             <v-sheet class="d-flex bg-surface-variant">
+             <v-sheet class="d-flex">
         <v-sheet width="50%">
           <img :src="previewImage" alt="" class="samimg h-auto ">
         </v-sheet>
         <v-sheet width="50%">
-            hello world
+             <textarea rows="18" cols="102" variant="outlined">
+              Impression: {{ imp }}
+              Findings: {{ finds }}
+              Additional Observations: {{ addObs }}
+            </textarea>
         </v-sheet>
       </v-sheet>
       <div class="">
@@ -40,6 +44,9 @@ export default {
       previewImage: '',
       drawer: false,
       group: null,
+      imp: 'Empty',
+      finds: 'Empty',
+      addObs: 'Empty',
     }
   },
   inject:["imgD"],
