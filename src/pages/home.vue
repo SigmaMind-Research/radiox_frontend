@@ -80,14 +80,12 @@ export default {
                     if(response.data.status == "success"){
                         this.overlay=false;
                         this.$router.push({ name: 'home' })
-                        console.log(response.status);
                     }
                     else{
                         this.$router.push({name:'login'})
                     }
                 })
                 .catch(error =>{
-                    console.log();
                     this.$router.push({ name: 'login' })
                     console.log('error is : ' + error);
                 });    

@@ -21,10 +21,9 @@
           variant="underlined"
         ></v-text-field>
         <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
-        <hr class="hr-text" data-content="OR">
-        <v-btn id="google-btn" type="submit" block class="mt-2"><img src="public/google.png">Sign in with Google</v-btn>
-
+        <hr class="hr-text" data-content="OR">  
       </v-form>
+      <v-btn id="google-btn" block class="mt-2" @click="login"><img src="/google.png" >Sign in with Google</v-btn>
     </v-sheet>
     <div id="sign-div">
       <label for="signup">Don't have an account?</label>
@@ -72,6 +71,29 @@ export default {
           console.log(error.response.data.message);
         }
       })
+    },
+    // navigate(url){
+    //   window.location.href=url
+    // },
+    async login(){ 
+   
+    const popupWindow = window.open(VITE_BASE_URL +'auth/google-login/', '_blank',);
+
+    const checkPopupClosed = setInterval(() => {
+      if (popupWindow.closed) {
+        clearInterval(checkPopupClosed);
+        // Redirect the main window to the home page
+        window.location.href = ' http://localhost:5173/';
+      }
+    }, 1000)
+
+    // Event listener to receive tokens from backend
+    popupWindow.addEventListener('message', (event) => {
+      // if (event.data.access_token && event.data.refresh_token) {
+        // Store the tokens in local storage or use them as needed
+        console.log("data: " + event);
+      // }
+    });
     }
   },
 }
@@ -128,6 +150,9 @@ export default {
     color: rgb(218, 216, 216);
     background-color: #37373d;
   }
+.v-sheet{
+  background: none;
+}
 #google-btn{
   color:black;
   background-color:#e3dcdc;

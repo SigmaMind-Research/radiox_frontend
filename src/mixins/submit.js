@@ -15,7 +15,11 @@ export default{
 
                 axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
                     .then(response => {
-                        console.log(response.data);
+                        this.imp= response.data.Impression
+                        this.finds = response.data.Findings
+                        this.addObs = response.data["Additional Observations"]
+
+                        console.log(response.status);
                     })
                 this.drawer = true;
             }
