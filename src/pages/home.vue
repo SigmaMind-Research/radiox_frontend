@@ -41,7 +41,7 @@ export default {
     mounted(){   
 
         const check = localStorage.getItem("token1")
-        if(check==null){
+        if(check===null){
             this.$router.push({name:'login'})
         }
 
@@ -60,7 +60,7 @@ export default {
                 if(response.data.status == "success"){
                     this.overlay = false;
                     localStorage.setItem("token0",response.data.Authorization[0])
-                    localStorage.setItem("expire", Date.now()+10000)
+                    localStorage.setItem("expire", Date.now() + 1000 * 60 * 60 * 24)
                     this.$router.push({ name: 'home' })
                 }
                 else{
@@ -70,10 +70,14 @@ export default {
             })
         }
         else{
-            const authTkn = `Bearer ${(localStorage.getItem('token0'))}`;
-                    const head0 = {
-                    "content-type": 'any',
-                    "Authorization": authTkn
+            const checkAT = localStorage.getItem('token0')
+            if(checkAT === null){
+              this.$router.push({ name: 'login' })  
+            }
+            else{
+                const head0 = {
+                "content-type": 'any',
+                "Authorization": `Bearer ${checkAT}`
                 } 
                 axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen/","",{ headers: head0 })
                 .then(response =>{
@@ -86,10 +90,11 @@ export default {
                     }
                 })
                 .catch(error =>{
-                    this.$router.push({ name: 'login' })
-                    console.log('error is : ' + error);
-                });    
-            }         
+                this.$router.push({ name: 'login' })
+                console.log('error is : ' + error);
+                 });    
+            }
+        }         
         }
     },
     watch: {

@@ -23,7 +23,7 @@
         <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
         <hr class="hr-text" data-content="OR">  
       </v-form>
-      <v-btn id="google-btn" block class="mt-2" @click="login"><img src="/google.png" >Sign in with Google</v-btn>
+      <v-btn id="google-btn" @click="loginWithGoogle" block class="mt-2"><img src="/google.png" >Sign in with Google</v-btn>
     </v-sheet>
     <div id="sign-div">
       <label for="signup">Don't have an account?</label>
@@ -54,13 +54,13 @@ export default {
        axios.post(import.meta.env.VITE_BASE_URL + 'auth/login/',this.loginData)
       .then((response) =>{
         if(response.status==200){  // or 201
-          this.$router.push({ name: 'home' })
           const key0 = response.data.Authorization[0];  // accesss token
           const key1 = response.data.Authorization[1];  // referesh token
-          const exp = Date.now() + 10000;
+          const exp = Date.now() + 1000*60*60*24;
           localStorage.setItem('token0',key0)
           localStorage.setItem('token1', key1)
           localStorage.setItem('expire',exp)
+          this.$router.push({ name: 'home' })
         }
       })
       .catch(error => {
@@ -72,29 +72,16 @@ export default {
         }
       })
     },
-    // navigate(url){
-    //   window.location.href=url
-    // },
-    async login(){ 
-   
-    const popupWindow = window.open(VITE_BASE_URL +'auth/google-login/', '_blank',);
+    async loginWithGoogle() {
+      window.open(import.meta.env.VITE_BASE_URL + "/auth/google-login/", '_blank');
+      window.addEventListener('message', (event) => {
+          const tokens = event.data.tokens;
+          localStorage.setItem('token0', tokens[0])
+          localStorage.setItem('token1', tokens[1])
 
-    const checkPopupClosed = setInterval(() => {
-      if (popupWindow.closed) {
-        clearInterval(checkPopupClosed);
-        // Redirect the main window to the home page
-        window.location.href = ' http://localhost:5173/';
-      }
-    }, 1000)
-
-    // Event listener to receive tokens from backend
-    popupWindow.addEventListener('message', (event) => {
-      // if (event.data.access_token && event.data.refresh_token) {
-        // Store the tokens in local storage or use them as needed
-        console.log("data: " + event);
-      // }
-    });
-    }
+          this.$router.push({ name: 'home' })
+      });
+    },
   },
 }
 </script>
