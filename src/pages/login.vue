@@ -7,14 +7,14 @@
           <label v-if="err" for="error">email or password does not match.</label>
 
         <v-text-field
-          id="field"
+          class="field"
           type="email"
           v-model="loginData.email"
           placeholder="Email"
           variant="underlined"
           ></v-text-field>
         <v-text-field
-          id="field"
+          class="field"
           type ="password"
           v-model="loginData.password"
           placeholder="Password"
@@ -83,6 +83,25 @@ export default {
 .v-sheet{
   background:none;
 }
+body{
+  padding:0;
+  margin:0;
+  background: linear-gradient(-45deg, #8758c0, #5C5470, #183D3D, #040D12);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 .login__card{
   font-family: 'Open Sans', sans-serif;  
@@ -137,7 +156,7 @@ img{
   padding-right: 12px;
 }
 
-#field{
+.field{
   text-align: center;
 }
 
