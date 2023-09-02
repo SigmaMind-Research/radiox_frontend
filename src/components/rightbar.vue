@@ -14,17 +14,16 @@
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
-
     <v-navigation-drawer v-model="drawer" color="#111112"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
              <v-sheet class="d-flex">
         <v-sheet width="50%">
           <img :src="previewImage" alt="" class="samimg h-auto ">
         </v-sheet>
         <v-sheet width="50%">
-            <textarea rows="18" cols="102" variant="outlined">
+             <textarea rows="18" cols="102" variant="outlined">
               Impression: {{ imp }}
-                Findings: {{ finds }}
-                Additional Observations: {{ addObs }}
+              Findings: {{ finds }}
+              Additional Observations: {{ addObs }}
             </textarea>
         </v-sheet>
       </v-sheet>
@@ -44,9 +43,9 @@ export default {
       previewImage: '',
       drawer: false,
       group: null,
-      imp: '',
-      finds: '',
-      addObs: '',
+      imp: 'Empty',
+      finds: 'Empty',
+      addObs: 'Empty',
     }
   },
   inject:["imgD"],
