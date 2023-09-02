@@ -40,8 +40,9 @@ export default {
     },
     mounted(){   
 
-        const check = localStorage.getItem("token1")
-        if(check===null){
+        const checkAT = localStorage.getItem("token0")
+        const checkRT = localStorage.getItem("token1")
+        if(checkAT===null || checkRT==null){
             this.$router.push({name:'login'})
         }
 
@@ -68,10 +69,13 @@ export default {
                     this.$router.push({ name: 'login' })
                 }
             })
+            .catch(error => {
+                        this.$router.push({ name: 'login' })
+                        console.log('error is : ' + error);
+                    });
         }
         else{
-            const checkAT = localStorage.getItem('token0')
-            if(checkAT === null){
+            if(checkAT === null || checkRT == null){
               this.$router.push({ name: 'login' })  
             }
             else{
