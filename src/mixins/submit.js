@@ -1,7 +1,7 @@
 import axios from 'axios';
 export default {
     methods: {
-        submitApi() {
+        async submitApi() {
             if (this.imgD) {
                 const formimg = new FormData();
                 console.log(this.imgD.name);
@@ -13,11 +13,11 @@ export default {
                     "Authorization": authTkn
                 };
 
-                axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
+                await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
                     .then(response => {
                         this.imp = response.data.Impression
                         this.finds = response.data.Findings
-                        this.addObs = response.data["Additional Observations"]
+                        this.addObs = response.data.Additional_Observations
 
                         console.log(response.status);
                     })

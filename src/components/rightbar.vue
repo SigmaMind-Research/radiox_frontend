@@ -14,8 +14,7 @@
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
-
-    <v-navigation-drawer v-model="drawer"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
+    <v-navigation-drawer v-model="drawer" color="#111112"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
              <v-sheet class="d-flex">
         <v-sheet width="50%">
           <img :src="previewImage" alt="" class="samimg h-auto ">
