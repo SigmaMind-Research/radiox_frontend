@@ -1,11 +1,10 @@
 <template>
-  <div class="login__box">
-    <v-card class="login__card bck-color" :loading="isLoading" location="center"  text="">
+  <div class="fluid pa-0 login__box d-flex align-center justify-center mt-16 mx-4">
+    <v-card class="login__card bck-color" :loading="isLoading">
       <h1>Log in</h1>
       <v-sheet width="300" class="mx-auto">
       <v-form fast-fail @submit.prevent="userLogin" class="bck-color">
-          <label v-if="err" for="error">email or password does not match.</label>
-
+        <label v-if="err" for="error">email or password does not match.</label>
         <v-text-field
           class="field"
           type="email"
@@ -96,7 +95,8 @@ export default {
 body{
   padding:0;
   margin:0;
-  background: linear-gradient(-45deg, #8758c0, #5C5470, #183D3D, #040D12);
+  /* background: linear-gradient(-45deg, #8758c0, #5C5470, #183D3D, #040D12); */
+  background: linear-gradient(-45deg, #834d9b, #5C5470, #3c1053,#ad5389);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -113,11 +113,16 @@ body{
   }
 }
 
+.login__box{
+  position:relative;
+  top:100px;
+}
+
 .login__card{
   font-family: 'Open Sans', sans-serif;  
   border-radius: 15px;
   width:416px;
-  margin-top: 24%;
+  /* margin-top: 24%; */
 }
 .bck-color{
   background-color:#37373d;

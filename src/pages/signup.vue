@@ -1,24 +1,24 @@
 <template>
-  <div class="signup__box">
-    <v-card class="signup__card bck-color" location="center" :loading="isLoading"  text="">
+  <div class="fluid pa-0 signup__box d-flex align-center justify-center mt-16 mx-4">
+    <v-card class="signup__card" :loading="isLoading"  text="">
       <h1>Sign Up</h1>
         <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="signUp" class="bck-color">
+      <v-form fast-fail @submit.prevent="signUp">
         <v-text-field
-          id="field"
+          class="field"
           type="email"
           v-model="signupData.email"
           placeholder="Email"
           variant="underlined"
         ></v-text-field>
         <v-text-field
-            id="field"
+            class="field"
             v-model="signupData.username"
             placeholder="Username"
             variant="underlined"
           ></v-text-field>
         <v-text-field
-          id="field"
+          class="field"
           v-model="signupData.password"
           placeholder="Password"
           variant="underlined"
@@ -71,25 +71,26 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
+.signup__box{
+  position:relative;
+  top:100px;
+}
+
 .signup__card{
   font-family: 'Open Sans', sans-serif;
   border-radius: 15px;
-  border-radius: 15px;
-  width:425px;
-  margin-top: 24%;
-}
-
-.bck-color{
+  width:416px;
   background-color: #37373d;
 }
+
 #field{
   text-align: center;
+} 
+h1{ 
+    color:white; 
+    text-align: center; 
+    margin: 16px; 
 }
-  h1{
-    color:white;
-    text-align: center;
-    margin: 16px;
-  }
 
 h4{
   padding:0 5px;
@@ -109,5 +110,13 @@ h4{
 }
 #sub{
   background-color: #8658c0;
+}
+@media screen and (max-width:560px){
+  html{
+    overflow:hidden;
+  }
+.signup__box{
+  margin-top:40%;
+}
 }
 </style>
