@@ -15,13 +15,14 @@ export default {
 
                 await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
                     .then(response => {
-                        this.imp = response.data.Impression
-                        this.finds = response.data.Findings
-                        this.addObs = response.data.Additional_Observations
+                        this.originalTexts[0] = "Impression: "+ response.data.Impression + "\n"
+                        this.originalTexts[1] = "Findings: "+ response.data.Findings + "\n"
+                        this.originalTexts[2] = "Additional Oservations: " + response.data.Additional_Observations + "\n"
 
                         console.log(response.status);
                     })
                 this.drawer = true;
+                this.startTyping();
             }
             else {
                 console.log(this.imgD);

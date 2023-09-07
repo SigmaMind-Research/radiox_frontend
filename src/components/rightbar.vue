@@ -15,25 +15,24 @@
     </v-list>
   </v-navigation-drawer>
     <v-navigation-drawer v-model="drawer" color="#111112"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
-             <v-sheet class="d-flex">
+      <v-sheet class="d-flex">
         <v-sheet width="50%">
           <img :src="previewImage" alt="" class="samimg h-auto ">
         </v-sheet>
         <v-sheet width="50%">
-             <textarea rows="18" cols="102" variant="outlined">
-              Impression: {{ imp }}
-              Findings: {{ finds }}
-              Additional Observations: {{ addObs }}
-            </textarea>
-        </v-sheet>
+            <textarea class="typewriter-text w-100" rows="14" :readonly="ifedit">{{ typedText }}</textarea>
+            <v-spacer></v-spacer>
+            <v-btn color="secondary" location="top" @click="ifedit=!ifedit">Edit</v-btn>
+          </v-sheet>
       </v-sheet>
       <div class="">
         <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
       </div>
     </v-navigation-drawer>
-</template>
+  </template>
 
 <script>
+// import '../assets/made'
 import upload from "../mixins/upload";
 import submit from "../mixins/submit"
 
@@ -43,10 +42,31 @@ export default {
       previewImage: '',
       drawer: false,
       group: null,
-      imp: 'Empty',
-      finds: 'Empty',
-      addObs: 'Empty',
-    }
+      ifedit:false,
+      originalTexts: [],
+      currentTextIndex: 0,
+      typedText: "",
+      currentPosition: 0,
+    };
+  },
+  methods: {
+    startTyping() {
+      if (this.currentTextIndex < this.originalTexts.length) {
+        const originalText = this.originalTexts[this.currentTextIndex];
+        const typingInterval = setInterval(() => {
+          if (this.currentPosition < originalText.length) {
+            this.typedText += originalText[this.currentPosition];
+            this.currentPosition++;
+          } else {
+            clearInterval(typingInterval);
+            // Move on to the next text
+            this.currentTextIndex++;
+            this.currentPosition = 0;
+            this.startTyping();
+          }
+        }, 30);
+      }
+    },
   },
   inject:["imgD"],
   watch: {
@@ -56,6 +76,9 @@ export default {
   },
   emits: ['setImg'],
   mixins: [upload,submit],
+  mounted() {
+    this.startTyping();
+  },
 }
 
 </script>
@@ -83,5 +106,13 @@ export default {
 
 .rows {
   padding: 1.5%;
+}
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: wrap;
+  font-size: 1.5em;
+  margin: 0 auto;
+  padding: 0 0.25em;
 }
 </style>
