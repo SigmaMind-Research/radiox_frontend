@@ -59,10 +59,10 @@ export default {
             axios.post(import.meta.env.VITE_BASE_URL + "auth/tokens/","",{ headers: head})
             .then(response => {
                 if(response.data.status == "success"){
-                    this.overlay = false;
                     localStorage.setItem("token0",response.data.Authorization[0])
                     localStorage.setItem("expire", Date.now() + 1000 * 60 * 60 * 24)
                     this.$router.push({ name: 'home' })
+                    setTimeout(() => this.overlay = false, 800);
                 }
                 else{
                     localStorage.removeItem("token1")
@@ -86,8 +86,8 @@ export default {
                 axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen/","",{ headers: head0 })
                 .then(response =>{
                     if(response.data.status == "success"){
-                        this.overlay=false;
                         this.$router.push({ name: 'home' })
+                        setTimeout(() => this.overlay = false, 800);
                     }
                     else{
                         this.$router.push({name:'login'})

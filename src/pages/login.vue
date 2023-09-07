@@ -122,7 +122,6 @@ body{
   font-family: 'Open Sans', sans-serif;  
   border-radius: 15px;
   width:416px;
-  /* margin-top: 24%; */
 }
 .bck-color{
   background-color:#37373d;

@@ -35,6 +35,7 @@
 // import '../assets/made'
 import upload from "../mixins/upload";
 import submit from "../mixins/submit"
+import typingEff from "../mixins/typingEff";
 
 export default {
   data() {
@@ -49,25 +50,6 @@ export default {
       currentPosition: 0,
     };
   },
-  methods: {
-    startTyping() {
-      if (this.currentTextIndex < this.originalTexts.length) {
-        const originalText = this.originalTexts[this.currentTextIndex];
-        const typingInterval = setInterval(() => {
-          if (this.currentPosition < originalText.length) {
-            this.typedText += originalText[this.currentPosition];
-            this.currentPosition++;
-          } else {
-            clearInterval(typingInterval);
-            // Move on to the next text
-            this.currentTextIndex++;
-            this.currentPosition = 0;
-            this.startTyping();
-          }
-        }, 30);
-      }
-    },
-  },
   inject:["imgD"],
   watch: {
     group() {
@@ -75,12 +57,11 @@ export default {
     },
   },
   emits: ['setImg'],
-  mixins: [upload,submit],
+  mixins: [upload,submit,typingEff],
   mounted() {
     this.startTyping();
   },
 }
-
 </script>
 
 <style >

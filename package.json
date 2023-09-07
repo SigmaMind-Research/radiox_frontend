@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mdi/font": "5.9.55",
+    "@mdi/font": "^7.2.96",
     "axios": "^1.4.0",
     "roboto-fontface": "*",
     "vue": "^3.2.47",

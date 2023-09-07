@@ -75,21 +75,7 @@ methods:{
 h1 {
   color: antiquewhite;
   padding-left: 20px;
-}
-
-/* .tog{
-  padding-left: 300px;
-  font-weight: bold;
-  color: aliceblue;
-} */
-/* .ico{
-  position: relative;
-  color: aliceblue;
-  font-size: 20px;
-  margin-left: auto;
-  margin-right: 0;
-} */
-.icon-ele {
+}.icon-ele {
   margin-right: 10%;
   color: aliceblue;
   font-size: 27px;

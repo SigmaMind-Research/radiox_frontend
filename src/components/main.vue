@@ -2,7 +2,7 @@
     <v-main style="min-height:100vh; display: flex; background-color: black;">
       <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
           class="samimg">
-      <v-btn id="subb" variant="tonal" @click.stop=submitFun v-show="sub" location="bottom"
+      <v-btn id="subb" variant="tonal" @click.stop=submitApi v-show="sub" location="bottom"
           color="primary">Submit</v-btn>
     </v-main>
 
@@ -34,15 +34,15 @@
           </v-card>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>Zz
+    </v-navigation-drawer>
 
   <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
-    <v-container class="info">
-      <div id="chart">
-        
-      </div>
-    </v-container>
-    <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
+    <v-sheet>
+      <textarea class="typewriter-text w-100" rows="14" :readonly="ifedit">{{ typedText }}</textarea>
+      <v-spacer></v-spacer>
+      <v-btn color="secondary" location="top" @click="ifedit = !ifedit">Edit</v-btn>
+      <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
+    </v-sheet>
   </v-navigation-drawer>
 
   <div v-if="!viewTools">
@@ -91,7 +91,6 @@
                   </v-list>
               </v-menu>
           </v-row>
-
       </v-bottom-navigation>
   </div>
 </template>
@@ -100,11 +99,15 @@
 import {computed} from 'vue'
 import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
+import submit from '../mixins/submit'
+import typingEff from '../mixins/typingEff'
+
 export default {
   data() {
     return {
       previewImage: '',
       imageData:null,
+      imgD:null,
       viewTools: false,
       drawer: false,
       group: null,
@@ -114,17 +117,22 @@ export default {
       briVal: 100,
       conVal: 100,
       value: '',
+      ifedit:false,
+      originalTexts: [],
+      currentTextIndex: 0,
+      typedText: "",
+      currentPosition: 0,
     }
   },
   provide(){
     return{
-      imgD:computed(() => this.imageData)
+      imgD:computed(() => this.imgD)
     }
   },
   methods: {
     imgset({name,nameData}) {
       this.previewImage = name;
-      this.imageData = nameData;
+      this.imgD = nameData;
       this.sub = true;
 
     },
@@ -142,9 +150,10 @@ export default {
       this.drawer = false
     },
   },
+   mixins: [submit,typingEff],
 }
 </script>
-<style>
+<style scoped>
 .samimg {
   width: 100%;
   height:fit-content;
