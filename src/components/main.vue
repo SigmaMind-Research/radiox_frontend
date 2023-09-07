@@ -153,7 +153,7 @@ export default {
    mixins: [submit,typingEff],
 }
 </script>
-<style scoped>
+<style>
 .samimg {
   width: 100%;
   height:fit-content;
