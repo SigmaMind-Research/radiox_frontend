@@ -1,9 +1,15 @@
 <template>
+  <h1 class="greetings">Welcome to <span>SigmaMind</span></h1>
+  <div class="backgroung-wrapper">
+       <div class="wave"></div>
+       <div class="wave"></div>
+       <div class="wave"></div>
+  </div>
   <div class="fluid pa-0 login__box d-flex align-center justify-center mt-16 mx-4">
-    <v-card class="login__card bck-color" :loading="isLoading">
+    <v-card class="login__card" :loading="isLoading">
       <h1>Log in</h1>
       <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="userLogin" class="bck-color">
+      <v-form fast-fail @submit.prevent="userLogin">
         <label v-if="err" for="error">email or password does not match.</label>
         <v-text-field
           class="field"
@@ -89,42 +95,78 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-.v-sheet{
-  background:none;
+html{
+  overflow: hidden;
 }
 body{
   padding:0;
   margin:0;
-  /* background: linear-gradient(-45deg, #8758c0, #5C5470, #183D3D, #040D12); */
-  background: linear-gradient(-45deg, #834d9b, #5C5470, #3c1053,#ad5389);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background-color: #18122B;
+}
+h1.greetings{
+  font-size: 50px;
+}
+h1 span{
+  color: #CD1818;
+  letter-spacing: 3px;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.v-sheet{
+  background:none;
+}
+
+.wave {
+     background: linear-gradient(179.4deg,#8294C4  -16.9%, #A5D7E8 119.9%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: 0px -100px 24px -16px rgba(0,0,10,0.1);
+}
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 15s linear reverse infinite;
+    opacity: 0.8;
+}
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+    25% {
+        transform: translateX(-25%);
+    }
+    50% {
+        transform: translateX(-50%);
+    }
+    75% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(1);
+    }
 }
 
 .login__box{
   position:relative;
-  top:100px;
 }
 
 .login__card{
   font-family: 'Open Sans', sans-serif;  
   border-radius: 15px;
   width:416px;
-}
-.bck-color{
-  background-color:#37373d;
+  background-color: #3A3845;
+  box-shadow: black 0px 10px 20px, #251B37 0px 6px 6px;
 }
 
 .hr-text {
@@ -157,7 +199,7 @@ body{
     padding: 0 .5em;
     line-height: 1.5em;
     color: rgb(218, 216, 216);
-    background-color: #37373d;
+    background-color: #3a3845;
 }
 #google-btn{
   color:black;
@@ -169,7 +211,7 @@ img{
   padding-right: 12px;
 }
 
-.field{
+.field input{
   text-align: center;
 }
 
@@ -181,7 +223,7 @@ h1{
 
 h4{
   padding:0 5px;
-  color: #D7BBF5;
+  color: #a9d6e5;
   text-transform: capitalize;
 }
 #sign-div{
@@ -195,7 +237,7 @@ h4{
   font-size: 0.9rem;
 }
 #sub{
-  background-color: #8758c0;
+  background-color: #5692ab;
   margin:20px 0;
 }
 </style>

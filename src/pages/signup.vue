@@ -1,6 +1,12 @@
 <template>
+  <h1 class="greetings">Welcome to <span>SigmaMind</span></h1>
+  <div class="backgroung-wrapper">
+       <div class="wave"></div>
+       <div class="wave"></div>
+       <div class="wave"></div>
+  </div>
   <div class="fluid pa-0 signup__box d-flex align-center justify-center mt-16 mx-4">
-    <v-card class="signup__card" :loading="isLoading"  text="">
+    <v-card class="signup__card" :loading="isLoading">
       <h1>Sign Up</h1>
         <v-sheet width="300" class="mx-auto">
       <v-form fast-fail @submit.prevent="signUp">
@@ -73,17 +79,17 @@ export default {
 
 .signup__box{
   position:relative;
-  top:100px;
 }
 
 .signup__card{
   font-family: 'Open Sans', sans-serif;
   border-radius: 15px;
   width:416px;
-  background-color: #37373d;
+  background-color: #3A3845;
+  box-shadow: black 0px 10px 20px, #251B37 0px 6px 6px;
 }
 
-#field{
+.field input{
   text-align: center;
 } 
 h1{ 
@@ -94,7 +100,7 @@ h1{
 
 h4{
   padding:0 5px;
-  color: #D7BBF5;
+  color: #a9d6e5;
   text-transform: capitalize;
 }
 
@@ -109,14 +115,6 @@ h4{
   font-size: 0.9rem;
 }
 #sub{
-  background-color: #8658c0;
-}
-@media screen and (max-width:560px){
-  html{
-    overflow:hidden;
-  }
-.signup__box{
-  margin-top:40%;
-}
+  background-color: #5692ab;
 }
 </style>
