@@ -2,8 +2,9 @@
     <v-main style="min-height:100vh; display: flex; background-color: black;">
       <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
           class="samimg">
-      <v-btn id="subb" variant="tonal" @click.stop=submitApi v-show="sub" location="bottom"
+      <v-btn id="subb" v-show="sub && !reop" variant="tonal" @click.stop=submitApi location="bottom"
           color="primary">Submit</v-btn>
+      <v-btn id="subb" v-show="reop" variant="tonal" color="primary" @click="drawer = true" location="bottom">Reopen</v-btn>
     </v-main>
 
     <Rightbar @setImg="imgset"/>
@@ -38,10 +39,12 @@
 
   <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto" temporary>
     <v-sheet>
-      <textarea class="typewriter-text w-100" rows="14" :readonly="ifedit">{{ typedText }}</textarea>
+      <textarea id="txt" class="typewriter-text w-100" rows="17" :readonly="ifedit">{{ typedText }}</textarea>
       <v-spacer></v-spacer>
-      <v-btn color="secondary" location="top" @click="ifedit = !ifedit">Edit</v-btn>
-      <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
+      <v-sheet class="d-flex flex-wrap">
+        <v-btn class="flex-1-0 ma-2" color="secondary" @click="ifedit = !ifedit">Edit</v-btn>
+        <v-btn class="flex-1-0 ma-2" color="primary" @click.stop="drawer = false">Close</v-btn>
+      </v-sheet>
     </v-sheet>
   </v-navigation-drawer>
 
@@ -122,6 +125,7 @@ export default {
       currentTextIndex: 0,
       typedText: "",
       currentPosition: 0,
+      reop:false,
     }
   },
   provide(){
@@ -134,6 +138,7 @@ export default {
       this.previewImage = name;
       this.imgD = nameData;
       this.sub = true;
+      this.reop=false
 
     },
     submitFun(){
@@ -153,6 +158,7 @@ export default {
    mixins: [submit,typingEff],
 }
 </script>
+
 <style>
 .samimg {
   width: 100%;
@@ -196,19 +202,13 @@ export default {
 .slid {
   padding: 15px 25px;
 }
-.jaidev{
-  border:none;
-  box-shadow: none;
-}
 .toolbr {
   text-align: center;
   padding: 6px;
 }
-
-/* #lab {
-  margin-left: 80%;
-
-} */
+#txt{
+  overflow-y: auto;
+}
 @media screen and (min-width:1280px) {
   #footerset {
     display: none;

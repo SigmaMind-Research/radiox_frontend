@@ -7,7 +7,8 @@
             <v-file-input accept="image/png, image/jpeg, image/dcm" @change="uploadImage"
               placeholder="upload x-ray ...." prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
             <v-card-actions>
-              <v-btn id="subbtn" variant="tonal" @click="submitApi">Submit</v-btn>
+              <v-btn id="subbtn" :isdisable="dis" variant="tonal" color="secondary" @click="submitApi" >Submit</v-btn>
+              <v-btn id="subbtn" v-show="reop" variant="tonal" color="primary" @click="drawer=true" >Reopen</v-btn>
             </v-card-actions>
           </div>
         </v-card>
@@ -22,12 +23,12 @@
         <v-sheet width="50%">
             <textarea class="typewriter-text w-100" rows="14" :readonly="ifedit">{{ typedText }}</textarea>
             <v-spacer></v-spacer>
-            <v-btn color="secondary" location="top" @click="ifedit=!ifedit">Edit</v-btn>
+            <v-sheet class="d-flex justify-space-evenly">
+              <v-btn color="secondary" class="flex-1-0 ma-2 mr-4" @click="ifedit=!ifedit">Edit</v-btn>
+              <v-btn color="primary" class="flex-1-0 ma-2 ml-4" @click.stop="drawer = false">Close</v-btn>
+            </v-sheet>
           </v-sheet>
       </v-sheet>
-      <div class="">
-        <v-btn color="primary" location="center" @click.stop="drawer = false">Close</v-btn>
-      </div>
     </v-navigation-drawer>
   </template>
 
@@ -48,6 +49,8 @@ export default {
       currentTextIndex: 0,
       typedText: "",
       currentPosition: 0,
+      reop:false,
+      dis:true
     };
   },
   inject:["imgD"],

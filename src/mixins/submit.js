@@ -16,17 +16,16 @@ export default {
                 await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
                     .then(response => {
                         this.originalTexts[0] = "Impression: "+ response.data.Impression + "\n"
-                        this.originalTexts[1] = "Findings: "+ response.data.Findings + "\n"
-                        this.originalTexts[2] = "Additional Oservations: " + response.data.Additional_Observations + "\n"
-
-                        console.log(response.status);
+                        this.originalTexts[1] = "\nFindings: "+ response.data.Findings + "\n"
+                        this.originalTexts[2] = "\nAdditional Oservations: " + response.data.Additional_Observations + "\n"
                     })
                 this.drawer = true;
                 this.startTyping();
+                this.reop = true;
             }
             else {
-                console.log(this.imgD);
                 console.log("select image");
+                window.alert("No Image selected")
             }
         }
     }
