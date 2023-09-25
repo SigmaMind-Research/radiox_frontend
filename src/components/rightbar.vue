@@ -68,6 +68,13 @@ export default {
 </script>
 
 <style >
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+body{
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 #rightp {
   color: aliceblue;
   border: solid black;
