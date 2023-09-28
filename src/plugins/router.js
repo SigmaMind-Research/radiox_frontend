@@ -11,11 +11,11 @@ import feedbackView from '../pages/feedback.vue'
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-        {
-            path: '/sign-up',
-            name: 'signup',
-            component: signupView
-        },
+        // {
+        //     path: '/sign-up',
+        //     name: 'signup',
+        //     component: signupView
+        // },
         {
             path: '/login',
             name: 'login',
