@@ -15,9 +15,15 @@ export default {
 
                 await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
                     .then(response => {
-                        this.originalTexts[0] = "Impression: "+ response.data.Impression + "\n"
-                        this.originalTexts[1] = "\nFindings: "+ response.data.Findings + "\n"
-                        this.originalTexts[2] = "\nAdditional Oservations: " + response.data.Additional_Observations + "\n"
+                        console.log(response);
+                        if (response.data =='Upload a Valid Image'){
+                            this.originalTexts = "Uploaded image is not a x-ray. Please upload a valid image"
+                        }
+                        else{
+                            this.originalTexts[0] = "Impression: "+ response.data.Impression + "\n"
+                            this.originalTexts[1] = "\nFindings: "+ response.data.Findings + "\n"
+                            this.originalTexts[2] = "\nAdditional Oservations: " + response.data.Additional_Observations + "\n"
+                        }
                     })
                 this.drawer = true;
                 this.startTyping();

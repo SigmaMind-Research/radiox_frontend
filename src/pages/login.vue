@@ -1,15 +1,22 @@
 <template>
-  <h1 class="greetings">Welcome to <span>SigmaMind</span></h1>
+  <div class="greetings">
+    <h1 class="main-head">Welcome to <span>SigmaMind</span></h1>
+    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem Ipsum Generator.
+</p>
+
+  </div>
   <div class="backgroung-wrapper">
        <div class="wave"></div>
        <div class="wave"></div>
        <div class="wave"></div>
   </div>
-  <div class="fluid pa-0 login__box d-flex align-center justify-center mt-16 mx-4">
+  <div class="fluid pa-0 login__box d-flex justify-end align-stretch">
     <v-card class="login__card" :loading="isLoading">
-      <h1>Log in</h1>
-      <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="userLogin">
+      <div class="login_cont">
+        <h1>Get Started</h1>
+
+        <v-sheet width="300" class="mx-auto">
+          <!-- <v-form fast-fail @submit.prevent="userLogin">
         <label v-if="err" for="error">email or password does not match.</label>
         <v-text-field
           class="field"
@@ -18,36 +25,33 @@
           placeholder="Email"
           variant="underlined"
           ></v-text-field>
-        <v-text-field
+          <v-text-field
           class="field"
           type ="password"
           v-model="loginData.password"
           placeholder="Password"
           variant="underlined"
-        ></v-text-field>
-        <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
-      </v-form>
-      <hr class="hr-text" data-content="OR">  
-      <v-btn id="google-btn" @click="loginWithGoogle" block class="mt-2"><img src="/google.png" >Sign in with Google</v-btn>
+          ></v-text-field>
+          <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
+        </v-form>
+        <hr class="hr-text" data-content="OR">   -->
+        <v-btn id="google-btn" @click="loginWithGoogle" block class="mt-2"><img src="/google.png" >Sign in with Google</v-btn>
     </v-sheet>
-    <div id="sign-div">
-      <label for="signup">Don't have an account?</label>
-      <RouterLink :to="{name:'signup'}"><h4>sign up</h4></RouterLink>
-    </div>
-    </v-card>
   </div>
+  </v-card>
+</div>
 </template>
 
 <script>
   import axios from 'axios'
-export default {
+  export default {
     name:'login',
-  data() {
-    return{
+    data() {
+      return{
         isLoading:false,
         err:false,
-      loginData:{
-        email:'',
+        loginData:{
+          email:'',
         password:''
       }
     }
@@ -103,10 +107,25 @@ body{
   margin:0;
   background-color: #18122B;
 }
-h1.greetings{
-  font-size: 50px;
+.main-head{
+  text-align: left;
+  margin-left: 10%;
+}
+.greetings{
+  position: absolute;
+  font-size: 3.7rem;
+  width: 70%;
+  line-height: 1.2;
+  margin-top: 10%;
+}
+.greetings p{
+  font-size: 1.5rem;
+  margin:1% 11%;
+  opacity: 0.7;
+  width: 70%;
 }
 h1 span{
+  font-size: 8rem;
   color: #CD1818;
   letter-spacing: 3px;
 }
@@ -116,23 +135,23 @@ h1 span{
 }
 
 .wave {
-     background: linear-gradient(179.4deg,#8294C4  -16.9%, #A5D7E8 119.9%);
-    border-radius: 1000% 1000% 0 0;
-    position: fixed;
-    width: 200%;
-    height: 12em;
-    animation: wave 10s -3s linear infinite;
-    transform: translate3d(0, 0, 0);
-    opacity: 0.8;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    box-shadow: 0px -100px 24px -16px rgba(0,0,10,0.1);
+  background: linear-gradient(179.4deg,#8294C4  -16.9%, #A5D7E8 119.9%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  box-shadow: 0px -100px 24px -16px rgba(0,0,10,0.1);
 }
 .wave:nth-of-type(2) {
-    bottom: -1.25em;
-    animation: wave 15s linear reverse infinite;
-    opacity: 0.8;
+  bottom: -1.25em;
+  animation: wave 15s linear reverse infinite;
+  opacity: 0.8;
 }
 .wave:nth-of-type(3) {
     bottom: -2.5em;
@@ -140,33 +159,42 @@ h1 span{
     opacity: 0.9;
 }
 @keyframes wave {
-    2% {
-        transform: translateX(1);
-    }
-    25% {
-        transform: translateX(-25%);
-    }
-    50% {
-        transform: translateX(-50%);
-    }
-    75% {
-        transform: translateX(-25%);
-    }
-    100% {
-        transform: translateX(1);
-    }
+  2% {
+      transform: translateX(1);
+  }
+  25% {
+      transform: translateX(-25%);
+  }
+  50% {
+      transform: translateX(-50%);
+  }
+  75% {
+      transform: translateX(-25%);
+  }
+  100% {
+      transform: translateX(1);
+  }
 }
 
 .login__box{
   position:relative;
+  font-size: 1.5rem;
 }
 
 .login__card{
   font-family: 'Open Sans', sans-serif;  
-  border-radius: 15px;
-  width:416px;
-  background-color: #3A3845;
-  box-shadow: black 0px 10px 20px, #251B37 0px 6px 6px;
+  width: 30%;
+  height: 100vh;
+  background-color: rgb(24,61,61,0.95);
+   color: #fff;
+  /* background-color: #3A3845; */
+  /* background-color: #213555; */
+  /* box-shadow: black 0px 10px 20px, #251B37 0px 6px 6px; */
+  /* backdrop-filter: blur(5px); */
+}
+
+.login_cont{
+  margin-top: 50%;
 }
 
 .hr-text {
@@ -182,13 +210,13 @@ h1 span{
 }
 
 .hr-text::before {
-    content: '';
-    background: linear-gradient(to right, transparent, white, transparent);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
+  content: '';
+  background: linear-gradient(to right, transparent, white, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
 }
   
   .hr-text::after {
@@ -204,15 +232,23 @@ h1 span{
 #google-btn{
   color:black;
   background-color:#e3dcdc;
-  margin:20px 0;
+  padding: 20px;
+  font-size: large;
 }
 
 img{
   padding-right: 12px;
 }
 
+#test{
+ height: 300px;
+ margin-left: -75px;
+ margin-bottom: 4%;
+}
 .field input{
   text-align: center;
+  border-radius: 4px;
+  
 }
 
 h1{
