@@ -4,10 +4,10 @@
       <router-link to="/">RADIOX</router-link>
     </h1>
     <template v-slot:append>
-      <v-btn class="icon-ele"> <v-icon icon="mdi-help-circle" /></v-btn>
+      <v-btn class="icon-ele"><img width="45" height="30" src="https://img.icons8.com/ios/50/FFFFFF/help--v1.png" alt="help--v1"/></v-btn>
       <v-menu transition="scroll-y-transition">
         <template v-slot:activator="{ props }">
-          <v-btn class="icon-ele" v-bind="props"> <v-icon icon="mdi-account" /></v-btn>
+          <v-btn class="icon-ele" v-bind="props"><img width="42" height="30" src="https://img.icons8.com/material-outlined/24/FFFFFF/user-male-circle.png" alt="user-male-circle"/></v-btn>
         </template>
           <v-list>
               <v-list-item v-for="info in accoundinfo" :key="info" router :to="info.route" link>
@@ -72,6 +72,13 @@ methods:{
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+body{
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 h1 {
   color: antiquewhite;
   padding-left: 20px;

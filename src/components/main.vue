@@ -56,16 +56,16 @@
           <v-row justify="center">
               <v-menu transition="scroll-y-reverse-transition">
                   <template v-slot:activator="{ props }">
-                      <v-btn class="ma-2" v-bind="props" @click="viewTools=false">
-                          <v-icon icon="mdi-undo-variant" />
+                      <v-btn class="ma-1" v-bind="props" @click="viewTools=false">
+                          <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/windows/32/FFFFFF/circled-left-2.png" alt="back"/>
                           Back
                       </v-btn>
                   </template>
               </v-menu>
               <v-menu transition="scroll-y-reverse-transition" width="300px" :close-on-content-click="false">
                   <template v-slot:activator="{ props }">
-                      <v-btn class="ma-2" v-bind="props">
-                          <v-icon>mdi-brightness-6</v-icon>
+                      <v-btn class="ma-1" v-bind="props">
+                          <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/brightness-settings.png" alt="brightness-settings"/>
                           Brightness
                       </v-btn>
                   </template>
@@ -80,8 +80,8 @@
 
               <v-menu transition="scroll-y-reverse-transition" width="300px" :close-on-content-click="false">
                   <template v-slot:activator="{ props }">
-                      <v-btn class="ma-2" v-bind="props">
-                          <v-icon icon="mdi-contrast-circle" />
+                      <v-btn class="ma-1" v-bind="props">
+                          <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/fluency-systems-filled/48/FFFFFF/contrast--v2.png" alt="contrast--v2"/>
                           Contrast
                       </v-btn>
                   </template>
@@ -160,6 +160,13 @@ export default {
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+body{
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 .samimg {
   width: 100%;
   height:fit-content;
