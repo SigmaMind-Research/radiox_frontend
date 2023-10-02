@@ -2,6 +2,7 @@ import axios from 'axios';
 export default {
     methods: {
         async submitApi() {
+            this.isLoading=true
             if (this.imgD) {
                 const formimg = new FormData();
                 console.log(this.imgD.name);

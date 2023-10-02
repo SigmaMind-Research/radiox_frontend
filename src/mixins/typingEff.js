@@ -1,6 +1,7 @@
 export default {
     methods: {
         startTyping() {
+            this.isLoading=false
             if (this.currentTextIndex < this.originalTexts.length) {
                 const originalText = this.originalTexts[this.currentTextIndex];
                 const typingInterval = setInterval(() => {
