@@ -3,6 +3,11 @@ export default {
     methods: {
         async submitApi() {
             this.isLoading=true
+            
+            this.originalTexts=[]
+            this.currentPosition=0;
+            this.currentTextIndex = 0;
+            this.typedText="";
             if (this.imgD) {
                 const formimg = new FormData();
                 console.log(this.imgD.name);
