@@ -4,53 +4,37 @@
       <v-list-item>
         <v-card id="card" title="Upload image" text="Please upload your x-ray image here.">
           <div class="upload">
-            <v-file-input accept="image/png, image/jpeg, image/dcm" @change="uploadImage"
+            <v-file-input accept="image/png, image/jpeg, image/dcm" @change="uploadImage" @click="$emit('ifChange')"
               placeholder="upload x-ray ...." prepend-icon="mdi-camera" label="Upload x-ray here"></v-file-input>
             <v-card-actions>
-              <v-btn id="subbtn" :isdisable="dis" variant="tonal" color="secondary" @click="submitApi" >Submit</v-btn>
-              <v-btn id="subbtn" v-show="reop" variant="tonal" color="primary" @click="drawer=true" >Reopen</v-btn>
+              <v-btn id="subbtn" :disabled="dis" variant="tonal" color="secondary" @click="$emit('subEmit')" >Submit</v-btn>
+              <v-btn id="subbtn" v-show="reopen" variant="tonal" color="primary" @click="$emit('drawerEmit')" >Reopen</v-btn>
             </v-card-actions>
           </div>
         </v-card>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
-    <v-navigation-drawer v-model="drawer" color="#111112"  location="bottom" class="h-auto w-100 d-flex flex-wrap" style='z-index:2000' temporary>
-      <v-sheet class="d-flex">
-        <v-sheet width="50%">
-          <img :src="previewImage" alt="" class="samimg h-auto ">
-        </v-sheet>
-        <v-sheet width="50%">
-            <textarea class="typewriter-text w-100" rows="14" :readonly="ifedit">{{ typedText }}</textarea>
-            <v-spacer></v-spacer>
-            <v-sheet class="d-flex justify-space-evenly">
-              <v-btn color="secondary" class="flex-1-0 ma-2 mr-4" @click="ifedit=!ifedit">Edit</v-btn>
-              <v-btn color="primary" class="flex-1-0 ma-2 ml-4" @click.stop="drawer = false">Close</v-btn>
-            </v-sheet>
-          </v-sheet>
-      </v-sheet>
-    </v-navigation-drawer>
   </template>
 
 <script>
 // import '../assets/made'
 import upload from "../mixins/upload";
-import submit from "../mixins/submit"
 import typingEff from "../mixins/typingEff";
 
 export default {
+  props:['reopen'],
   data() {
     return {
-      previewImage: '',
-      drawer: false,
-      group: null,
-      ifedit:false,
+      // previewImage: '',
+      // drawer: false,
+      // group: null,
+      // ifedit:false,
       originalTexts: [],
-      currentTextIndex: 0,
-      typedText: "",
-      currentPosition: 0,
-      reop:false,
-      dis:true
+      // currentTextIndex: 0,
+      // typedText: "",
+      // currentPosition: 0,
+      dis:false
     };
   },
   inject:["imgD"],
@@ -59,11 +43,11 @@ export default {
       this.drawer = false
     },
   },
-  emits: ['setImg'],
-  mixins: [upload,submit,typingEff],
+  mixins: [upload,typingEff],
   mounted() {
     this.startTyping();
   },
+  // emits: ['ifChange', 'subEmit']
 }
 </script>
 
