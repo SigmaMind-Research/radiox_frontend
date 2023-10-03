@@ -1,23 +1,19 @@
 <template>
-    <v-app>
-        <v-card>
-            <v-layout>
-                <v-overlay
-                    :model-value="overlay"
-                    class="align-center justify-center"
-                    style="background-color: #141E46;"
-                >
-                    <v-progress-circular
-                        color=#9F91CC
-                        indeterminate
-                        size="64"
-                    ></v-progress-circular>
-                </v-overlay>
-                <Navbar />
-                <Main />
-            </v-layout>
-        </v-card>
-    </v-app>
+  <v-app>
+      <v-overlay
+          :model-value="overlay"
+          class="align-center justify-center"
+          style="background-color: #141E46;"
+      >
+        <v-progress-circular
+            color=#9F91CC
+            indeterminate
+            size="64"
+        ></v-progress-circular>
+      </v-overlay>
+    <Navbar />
+    <Main />
+  </v-app>
 </template>
 
 <script>
