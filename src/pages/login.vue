@@ -1,6 +1,6 @@
 <template>
   <div class="greetings">
-    <h1 class="main-head">Welcome to <span>SigmaMind</span></h1>
+    <h1 class="main-head">Welcome to <br><span>RadioX</span></h1>
     <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem Ipsum Generator.
 </p>
 
@@ -38,6 +38,19 @@
         <v-btn id="google-btn" @click="loginWithGoogle" block class="mt-2"><img src="/google.png" >Sign in with Google</v-btn>
     </v-sheet>
   </div>
+    <div class="circle-design">
+          <!-- Circle and Text Container -->
+          <div class="circle-text-container">
+            <div class="circle large-circle">
+              <div class="circle small-circle"></div>
+              <div class="curve top-left"></div>
+              <div class="curve top-right"></div>
+              <div class="curve bottom-left"></div>
+              <div class="curve bottom-right"></div>
+            </div>
+            <p class="circle-text">SigmaMind</p>
+          </div>
+    </div>
   </v-card>
 </div>
 </template>
@@ -105,7 +118,7 @@ html{
 body{
   padding:0;
   margin:0;
-  background-color: #18122B;
+  background-color: #1B4D3E;
 }
 .main-head{
   text-align: left;
@@ -126,7 +139,7 @@ body{
 }
 h1 span{
   font-size: 8rem;
-  color: #CD1818;
+  color: #e7e3c0;
   letter-spacing: 3px;
 }
 
@@ -135,7 +148,7 @@ h1 span{
 }
 
 .wave {
-  background: linear-gradient(179.4deg,#8294C4  -16.9%, #A5D7E8 119.9%);
+  background: transparent;
   border-radius: 1000% 1000% 0 0;
   position: fixed;
   width: 200%;
@@ -185,12 +198,8 @@ h1 span{
   font-family: 'Open Sans', sans-serif;  
   width: 30%;
   height: 100vh;
-  background-color: rgb(24,61,61,0.95);
-   color: #fff;
-  /* background-color: #3A3845; */
-  /* background-color: #213555; */
-  /* box-shadow: black 0px 10px 20px, #251B37 0px 6px 6px; */
-  /* backdrop-filter: blur(5px); */
+  background-color: rgb(10,10,10,0.95);
+  color: #fff;
 }
 
 .login_cont{
@@ -219,15 +228,15 @@ h1 span{
   height: 1px;
 }
   
-  .hr-text::after {
-    content: attr(data-content);
-    position: relative;
-    display: inline-block;
-    color: black;
-    padding: 0 .5em;
-    line-height: 1.5em;
-    color: rgb(218, 216, 216);
-    background-color: #3a3845;
+.hr-text::after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding: 0 .5em;
+  line-height: 1.5em;
+  color: rgb(218, 216, 216);
+  background-color: #3a3845;
 }
 #google-btn{
   color:black;
@@ -245,10 +254,10 @@ img{
  margin-left: -75px;
  margin-bottom: 4%;
 }
+
 .field input{
   text-align: center;
-  border-radius: 4px;
-  
+  border-radius: 4px;  
 }
 
 h1{
@@ -275,5 +284,83 @@ h4{
 #sub{
   background-color: #5692ab;
   margin:20px 0;
+}
+.circle-design {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  left:35%;
+}
+
+.circle-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  position: fixed;
+  bottom:-15px;
+  margin-top: 10px; /* Adjust as needed */
+}
+
+.circle-text {
+  position:relative;
+  bottom:45px;
+  left:75%;
+  font-size: 1.3rem; /* Adjust the font size for the text */
+  color: #fff;
+}
+
+.circle {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #074214;
+    border-radius: 50%;
+    position: relative;
+}
+
+.small-circle {
+    width: 20px;
+    height: 20px;
+    background-color: #074214;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.curve {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: 2px solid #074214;
+    border-radius: 50%;
+}
+
+.top-left {
+    top: -10px;
+    left: -10px;
+    border-top: none;
+    border-left: none;
+}
+
+.top-right {
+    top: -10px;
+    right: -10px;
+    border-top: none;
+    border-right: none;
+}
+
+.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    border-bottom: none;
+    border-left: none;
+}
+
+.bottom-right {
+    bottom: -10px;
+    right: -10px;
+    border-bottom: none;
+    border-right: none;
 }
 </style>
