@@ -101,6 +101,22 @@
       </v-row>
     </v-bottom-navigation>
   </div>
+      <v-snackbar v-model="snackbar" :timeout="timeout" color="#F9F3CC">
+        Please select a x-ray image first
+        <template v-slot:actions>
+          <v-btn color="blue" variant="text" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+      
+    <v-alert class="alert-err" v-model="errAlrt" location="top" :timeout="timeout"
+    color="error"
+    icon="$error"
+    title="Connection error"
+    text="Something went wrong while retrieving data. Please try again..."
+  ></v-alert>
+
 </template>
 
 <script>
@@ -131,7 +147,10 @@ export default {
       typedText: "",
       currentPosition: 0,
       reop:false,
-      isLoading:false
+      isLoading:false,
+      snackbar: false,
+      timeout: 2000,
+      errAlrt:false,
     }
   },
   provide(){
@@ -160,6 +179,11 @@ export default {
     group() {
       this.drawer = false
     },
+    errAlrt(new_val) {
+      if (new_val) {
+        setTimeout(() => { this.errAlrt = false }, 4000)
+      }
+    }
   },
    mixins: [submit,typingEff],
 }
@@ -232,6 +256,11 @@ body{
   width: 100% !important;
   z-index: 1;
 
+}
+.alert-err{
+  position: absolute !important;
+  z-index: 2000;
+  margin-top: 80px;
 }
 @media screen and (min-width:1280px) {
   #footerset {
