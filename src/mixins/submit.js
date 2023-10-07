@@ -1,8 +1,20 @@
 import axios from 'axios';
+
+let abortController
+
 export default {
     methods: {
+        cancelReq() {
+            abortController.abort()
+        },
         async submitApi() {
+
+            this.cancelValue = true;
             
+            abortController = new AbortController()
+            const abortSignal = abortController.signal
+            
+
             this.originalTexts=[]
             this.currentPosition=0;
             this.currentTextIndex = 0;
@@ -18,7 +30,7 @@ export default {
                     "Authorization": authTkn
                 };
                 
-                await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0 })
+                await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0, signal: abortSignal })
                     .then(response => {
                         if (response.data =='Upload a Valid Image'){
                             this.originalTexts = "Uploaded image is not a x-ray. Please upload a valid image"
@@ -33,13 +45,20 @@ export default {
                         this.reop = true;
                     })
                     .catch(e => {
-                        this.errAlrt=true;
-                        this.isLoading=false;
+                        if(abortSignal.aborted==true){
+                            this.isLoading = false;
+                        }
+                        else{
+                            this.errAlrt=true;
+                            this.isLoading=false;
+                        }
                     })
+                    this.cancelValue=false;
             }
             else {
                 this.snackbar=true;
             }
         }
-    }
+    },
+
 }

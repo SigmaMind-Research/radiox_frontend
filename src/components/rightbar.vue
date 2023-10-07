@@ -12,6 +12,7 @@
             </v-card-actions>
           </div>
         </v-card>
+            <v-btn variant="tonal" location="top" color="red" v-show="cancelValue" @click="$emit('canc')" >Cancel request</v-btn>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -23,7 +24,7 @@ import upload from "../mixins/upload";
 import typingEff from "../mixins/typingEff";
 
 export default {
-  props:['reopen'],
+  props:['reopen','cancel-value'],
   data() {
     return {
       // previewImage: '',
@@ -34,7 +35,7 @@ export default {
       // currentTextIndex: 0,
       // typedText: "",
       // currentPosition: 0,
-      dis:false
+      dis:false,
     };
   },
   inject:["imgD"],

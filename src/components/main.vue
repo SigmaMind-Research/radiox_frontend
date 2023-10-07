@@ -9,11 +9,12 @@
     ></v-progress-circular>
   <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
   class="samimg">
-    <v-btn id="subb" v-show="sub && !reop" variant="tonal" @click.stop=submitApi location="bottom"
+    <v-btn id="subb" v-show="sub && !reop && !cancelValue" variant="tonal" @click.stop=submitApi location="bottom"
         color="primary">Submit</v-btn>
     <v-btn id="subb" v-show="reop" variant="tonal" color="primary" @click="drawer = true" location="bottom">Reopen</v-btn>
+    <v-btn id="subb" color="red" style="z-index: 3000;" v-show="cancelValue" @click="cancelReq" location="bottom">Cancel request</v-btn>
   </v-main>
-  <Rightbar :reopen="reop" @setImg="imgset" @subEmit="submitApi" @drawerEmit="drawer=true" @ifChange="drawer=false"/>
+  <Rightbar :reopen="reop" :cancel-value="cancelValue" @setImg="imgset" @subEmit="submitApi" @drawerEmit="drawer=true" @ifChange="drawer=false" @canc="cancelReq"/>
 
   <v-navigation-drawer color="#111112" width="420">
     <v-list>
@@ -110,7 +111,7 @@
         </template>
       </v-snackbar>
       
-    <v-alert class="alert-err" v-model="errAlrt" location="top" :timeout="timeout"
+    <v-alert class="alert-err" v-model="errAlrt" :timeout="timeout"
     color="error"
     icon="$error"
     title="Connection error"
@@ -151,6 +152,7 @@ export default {
       snackbar: false,
       timeout: 2000,
       errAlrt:false,
+      cancelValue:false
     }
   },
   provide(){
@@ -260,6 +262,8 @@ body{
 .alert-err{
   position: absolute !important;
   z-index: 2000;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 80px;
 }
 @media screen and (min-width:1280px) {
@@ -270,4 +274,13 @@ body{
   #subb {
     display: none;
   }
-}</style>
+}
+@media screen and (max-width:1280px){
+.alert-err{
+  font-size: 0.85rem;
+  margin: 80px 6%;
+  left: 0;
+  transform: translateX(0)
+}
+}
+</style>
