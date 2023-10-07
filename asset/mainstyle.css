@@ -1,0 +1,73 @@
+body{
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.samimg {
+  width: 100%;
+  height:fit-content;
+  max-height: 100vh;
+  align-self: center;
+  padding: 10px;
+}
+
+#subb {
+  position: absolute;
+  margin: auto;
+  margin-bottom: 65px;
+  padding: 0 30px;
+}
+
+#myFileInput {
+    display: none;
+}
+
+#card {
+  /* color: white; */
+  /* background-color: #434242; */
+  margin: 0px 5px 22px;
+  border-radius: 12px;
+}
+#card .toolbr{
+  background-color:#111112;
+}
+#toolContainer{
+  padding: 20px;
+  border-radius:20px;
+}
+#tool-label{
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.0125em;
+  display:flex;
+  padding: 20px 30px ;
+  justify-content: space-between;
+}
+.slid {
+  padding: 15px 25px;
+}
+.toolbr {
+  text-align: center;
+  padding: 6px;
+}
+#txt{
+  overflow-y: auto;
+}
+#is-loading{
+  position: absolute;
+  align-self: center;
+  background-color: rgba(25, 23, 23,0.7);
+  /* padding:20% 25%; */
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1;
+
+}
+@media screen and (min-width:1280px) {
+  #footerset {
+    display: none;
+  }
+
+  #subb {
+    display: none;
+  }
+}
