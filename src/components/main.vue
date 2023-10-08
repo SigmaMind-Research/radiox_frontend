@@ -1,5 +1,7 @@
 <template>
   <v-main class="d-flex align-center justify-center" style="min-height:100vh; display: flex; background-color: black;">
+    <input type="file" @change='uploadImage' style="opacity: 1; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;"/>
+    <h3 class="drag-place">click or drag and drop image here</h3>
     <v-progress-circular v-show="isLoading"
     id="is-loading" 
     color="blue-lighten-3"
@@ -46,7 +48,7 @@
 
   <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto mt-pt-12" temporary>
     <v-sheet>
-      <textarea id="txt" class="typewriter-text w-100" rows="10" :readonly="ifedit">{{ typedText }}</textarea>
+      <textarea id="txt" v-model="typedText" class="typewriter-text w-100" rows="10" :readonly="ifedit"></textarea>
       <v-spacer></v-spacer>
       <v-sheet class="d-flex flex-wrap">
         <v-btn class="flex-1-0 ma-2" color="secondary" @click="ifedit = !ifedit">Edit</v-btn>
@@ -124,6 +126,7 @@
 import {computed} from 'vue'
 import Rightbar from './rightbar.vue'
 import Footer from './footer.vue'
+import upload from '../mixins/upload'
 import submit from '../mixins/submit'
 import typingEff from '../mixins/typingEff'
 
@@ -160,6 +163,11 @@ export default {
       imgD:computed(() => this.imgD)
     }
   },
+  computed:{
+    imgName(){
+      return JSON.stringify(this.imgD)
+    }
+  },
   methods: {
     imgset({name,nameData}) {
       this.previewImage = name;
@@ -187,7 +195,7 @@ export default {
       }
     }
   },
-   mixins: [submit,typingEff],
+   mixins: [upload,submit,typingEff],
 }
 </script>
 
@@ -216,6 +224,10 @@ body{
 
 #myFileInput {
     display: none;
+}
+
+.drag-place{
+  position: absolute;
 }
 
 #card {
