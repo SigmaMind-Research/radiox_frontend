@@ -1,16 +1,15 @@
 <template>
-  <div class="greetings">
-    <h1 class="main-head">Welcome to <br><span>RadioX</span></h1>
-    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem Ipsum Generator.
-</p>
-
-  </div>
   <div class="backgroung-wrapper">
        <div class="wave"></div>
        <div class="wave"></div>
        <div class="wave"></div>
   </div>
   <div class="fluid pa-0 login__box d-flex justify-end align-stretch">
+   <div class="greetings">
+     <h1 class="main-head">Welcome to <br><span>RadioX</span></h1>
+     <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem Ipsum Generator.</p>
+  </div>
+
     <v-card class="login__card" :loading="isLoading">
       <div class="login_cont">
         <h1>Get Started</h1>
@@ -36,21 +35,12 @@
         </v-form>
         <hr class="hr-text" data-content="OR">   -->
         <v-btn id="google-btn" @click="loginWithGoogle" block class="mt-2"><img src="/google.png" >Sign in with Google</v-btn>
+        <div class="footer-text">
+          <img src="/favicon.png" alt="">
+          <p>SigmaMind</p>
+        </div>
     </v-sheet>
   </div>
-    <div class="circle-design">
-          <!-- Circle and Text Container -->
-          <div class="circle-text-container">
-            <div class="circle large-circle">
-              <div class="circle small-circle"></div>
-              <div class="curve top-left"></div>
-              <div class="curve top-right"></div>
-              <div class="curve bottom-left"></div>
-              <div class="curve bottom-right"></div>
-            </div>
-            <p class="circle-text">SigmaMind</p>
-          </div>
-    </div>
   </v-card>
 </div>
 </template>
@@ -111,256 +101,6 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+@import url('/asset/loginstyle.css');
 
-html{
-  overflow: hidden;
-}
-body{
-  padding:0;
-  margin:0;
-  background-color: #1B4D3E;
-}
-.main-head{
-  text-align: left;
-  margin-left: 10%;
-}
-.greetings{
-  position: absolute;
-  font-size: 3.7rem;
-  width: 70%;
-  line-height: 1.2;
-  margin-top: 10%;
-}
-.greetings p{
-  font-size: 1.5rem;
-  margin:1% 11%;
-  opacity: 0.7;
-  width: 70%;
-}
-h1 span{
-  font-size: 8rem;
-  color: #e7e3c0;
-  letter-spacing: 3px;
-}
-
-.v-sheet{
-  background:none;
-}
-
-.wave {
-  background: transparent;
-  border-radius: 1000% 1000% 0 0;
-  position: fixed;
-  width: 200%;
-  height: 12em;
-  animation: wave 10s -3s linear infinite;
-  transform: translate3d(0, 0, 0);
-  opacity: 0.8;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  box-shadow: 0px -100px 24px -16px rgba(0,0,10,0.1);
-}
-.wave:nth-of-type(2) {
-  bottom: -1.25em;
-  animation: wave 15s linear reverse infinite;
-  opacity: 0.8;
-}
-.wave:nth-of-type(3) {
-    bottom: -2.5em;
-    animation: wave 20s -1s reverse infinite;
-    opacity: 0.9;
-}
-@keyframes wave {
-  2% {
-      transform: translateX(1);
-  }
-  25% {
-      transform: translateX(-25%);
-  }
-  50% {
-      transform: translateX(-50%);
-  }
-  75% {
-      transform: translateX(-25%);
-  }
-  100% {
-      transform: translateX(1);
-  }
-}
-
-.login__box{
-  position:relative;
-  font-size: 1.5rem;
-}
-
-.login__card{
-  font-family: 'Open Sans', sans-serif;  
-  width: 30%;
-  height: 100vh;
-  background-color: rgb(10,10,10,0.95);
-  color: #fff;
-}
-
-.login_cont{
-  margin-top: 50%;
-}
-
-.hr-text {
-  line-height: 1em;
-  position: relative;
-  outline: 0;
-  border: 0;
-  color: black;
-  text-align: center;
-  height: 1.5em;
-  opacity: .5;
-  margin:20px 0;
-}
-
-.hr-text::before {
-  content: '';
-  background: linear-gradient(to right, transparent, white, transparent);
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  height: 1px;
-}
-  
-.hr-text::after {
-  content: attr(data-content);
-  position: relative;
-  display: inline-block;
-  color: black;
-  padding: 0 .5em;
-  line-height: 1.5em;
-  color: rgb(218, 216, 216);
-  background-color: #3a3845;
-}
-#google-btn{
-  color:black;
-  background-color:#e3dcdc;
-  padding: 20px;
-  font-size: large;
-}
-
-img{
-  padding-right: 12px;
-}
-
-#test{
- height: 300px;
- margin-left: -75px;
- margin-bottom: 4%;
-}
-
-.field input{
-  text-align: center;
-  border-radius: 4px;  
-}
-
-h1{
-  color:white;
-  text-align: center;
-  margin: 16px;
-}
-
-h4{
-  padding:0 5px;
-  color: #a9d6e5;
-  text-transform: capitalize;
-}
-#sign-div{
-  display:flex;
-  justify-content: center;
-  margin-top: 16px;
-  margin-right: 16px; 
-  margin-bottom: 8px;
-  padding:20px;
-  color:white;
-  font-size: 0.9rem;
-}
-#sub{
-  background-color: #5692ab;
-  margin:20px 0;
-}
-.circle-design {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  left:35%;
-}
-
-.circle-text-container {
-  display: flex;
-  flex-direction: column;
-  align-items:flex-start;
-  position: fixed;
-  bottom:-15px;
-  margin-top: 10px; /* Adjust as needed */
-}
-
-.circle-text {
-  position:relative;
-  bottom:45px;
-  left:75%;
-  font-size: 1.3rem; /* Adjust the font size for the text */
-  color: #fff;
-}
-
-.circle {
-    width: 60px;
-    height: 60px;
-    border: 3px solid #074214;
-    border-radius: 50%;
-    position: relative;
-}
-
-.small-circle {
-    width: 20px;
-    height: 20px;
-    background-color: #074214;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.curve {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    border: 2px solid #074214;
-    border-radius: 50%;
-}
-
-.top-left {
-    top: -10px;
-    left: -10px;
-    border-top: none;
-    border-left: none;
-}
-
-.top-right {
-    top: -10px;
-    right: -10px;
-    border-top: none;
-    border-right: none;
-}
-
-.bottom-left {
-    bottom: -10px;
-    left: -10px;
-    border-bottom: none;
-    border-left: none;
-}
-
-.bottom-right {
-    bottom: -10px;
-    right: -10px;
-    border-bottom: none;
-    border-right: none;
-}
 </style>
