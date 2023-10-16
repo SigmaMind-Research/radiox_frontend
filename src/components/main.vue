@@ -202,6 +202,7 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+@import url('/asset/mainstyle.css');
 
 body{
   font-family: 'Space Grotesk', sans-serif;
