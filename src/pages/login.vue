@@ -12,35 +12,15 @@
 
     <v-card class="login__card" :loading="isLoading">
       <div class="login_cont">
-        <h1>Get Started</h1>
-
-        <v-sheet width="300" class="mx-auto">
-          <!-- <v-form fast-fail @submit.prevent="userLogin">
-        <label v-if="err" for="error">email or password does not match.</label>
-        <v-text-field
-          class="field"
-          type="email"
-          v-model="loginData.email"
-          placeholder="Email"
-          variant="underlined"
-          ></v-text-field>
-          <v-text-field
-          class="field"
-          type ="password"
-          v-model="loginData.password"
-          placeholder="Password"
-          variant="underlined"
-          ></v-text-field>
-          <v-btn id="sub" type="submit" block class="mt-2 sub">Submit</v-btn>
-        </v-form>
-        <hr class="hr-text" data-content="OR">   -->
+        <v-sheet width="310" class="login-sheet mx-auto">
+          <h1>Get Started</h1>
         <v-btn id="google-btn" @click="loginWithGoogle" block class="mt-2"><img src="/google.png" >Sign in with Google</v-btn>
-        <div class="footer-text">
-          <img src="/favicon.png" alt="">
-          <p>SigmaMind</p>
-        </div>
-    </v-sheet>
-  </div>
+      </v-sheet>
+    </div>
+    <div class="footer-text">
+      <img src="/favicon.png" alt="">
+      <p>SigmaMind</p>
+    </div>
   </v-card>
 </div>
 </template>
@@ -85,7 +65,7 @@
       })
     },
     async loginWithGoogle() {
-      window.open(import.meta.env.VITE_BASE_URL + "/auth/google-login/", '_blank');
+      window.open(import.meta.env.VITE_BASE_URL + "auth/google-login/", '_blank');
       window.addEventListener('message', (event) => {
           const tokens = event.data.tokens;
           localStorage.setItem('token0', tokens[0])

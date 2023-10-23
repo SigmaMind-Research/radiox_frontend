@@ -52,6 +52,7 @@
       <v-spacer></v-spacer>
       <v-sheet class="d-flex flex-wrap">
         <v-btn class="flex-1-0 ma-2" color="secondary" @click="ifedit = !ifedit">Edit</v-btn>
+        <v-btn class="flex-1-0 ma-2" color="blue" @click="ifShare()" :disabled=isDis >Save</v-btn>
         <v-btn class="flex-1-0 ma-2" color="primary" @click.stop="drawer = false">Close</v-btn>
       </v-sheet>
     </v-sheet>
@@ -149,6 +150,7 @@ export default {
       originalTexts: [],
       currentTextIndex: 0,
       typedText: "",
+      isDis:true,
       currentPosition: 0,
       reop:false,
       isLoading:false,
@@ -179,6 +181,16 @@ export default {
     submitFun(){
       this.$refs.submitApiFun.submitApi();
       this.drawer = true;
+    },
+    ifShare(){
+      const fileName = window.prompt("Please enter file name");
+      const genReport = this.typedText;
+      const blob = new Blob([genReport],{type:"text/plain"});
+      const fileUrl = URL.createObjectURL(blob);
+      const link =document.createElement("a");
+      link.download = `${fileName}.txt`;
+      link.href =fileUrl;
+      link.click();
     }
   },
     components: {
@@ -188,6 +200,11 @@ export default {
   watch: {
     group() {
       this.drawer = false
+    },
+    typedText(val,oval){
+      if(val!=null || val!="Uploaded image is not a x-ray. Please upload a valid image"){
+        setTimeout(() => this.isDis=false ,15000);
+      }
     },
     errAlrt(new_val) {
       if (new_val) {
