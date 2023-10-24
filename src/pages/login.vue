@@ -6,8 +6,10 @@
   </div>
   <div class="fluid pa-0 login__box d-flex justify-end align-stretch">
    <div class="greetings">
-     <h1 class="main-head">Welcome to <br><span>RadioX</span></h1>
-     <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem Ipsum Generator.</p>
+    <div id="animation">
+     <h1>RadioX <span>.</span><span>.</span><span>.</span></h1>
+     </div>
+     <p>Where cutting-edge AI meets medical expertise to deliver accurate diagnostic reports, empowering healthcare professionals and enhancing patient care..</p>
   </div>
 
     <v-card class="login__card" :loading="isLoading">
