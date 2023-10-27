@@ -3,10 +3,9 @@
       <v-overlay
           :model-value="overlay"
           class="align-center justify-center"
-          style="background-color: #141E46;"
+          style="background-color: #030f01;"
       >
         <v-progress-circular
-            color=#9F91CC
             indeterminate
             size="64"
         ></v-progress-circular>
@@ -52,7 +51,7 @@ export default {
             localStorage.removeItem("token0")
             localStorage.removeItem("expire")
 
-            axios.post(import.meta.env.VITE_BASE_URL + "auth/tokens/","",{ headers: head})
+            axios.post(import.meta.env.VITE_BASE_URL + "/auth/tokens/","",{ headers: head})
             .then(response => {
                 if(response.data.status == "success"){
                     localStorage.setItem("token0",response.data.Authorization[0])
@@ -79,7 +78,7 @@ export default {
                 "content-type": 'any',
                 "Authorization": `Bearer ${checkAT}`
                 } 
-                axios.post(import.meta.env.VITE_BASE_URL + "auth/splashscreen/","",{ headers: head0 })
+                axios.post(import.meta.env.VITE_BASE_URL + "/auth/splashscreen/","",{ headers: head0 })
                 .then(response =>{
                     if(response.data.status == "success"){
                         this.$router.push({ name: 'home' })
@@ -105,4 +104,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>
