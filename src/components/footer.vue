@@ -1,5 +1,5 @@
 <template>
-    <v-bottom-navigation color="blue" class="overflow-visible" style="height: 56px;" grow>
+    <v-bottom-navigation color="blue" class="overflow-hidden" style="height: 56px;" grow>
         <v-row justify="center">
             <v-menu transition="scroll-y-reverse-transition">
                 <template v-slot:activator="{ props }">
