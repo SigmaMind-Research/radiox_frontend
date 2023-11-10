@@ -1,7 +1,7 @@
 <template>
   <v-main class="d-flex align-center justify-center" style="min-height:100vh; display: flex; background-color: black;">
-    <input type="file" @change='uploadImage' style="opacity: 1; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;"/>
-    <h3 class="drag-place">click or drag and drop image here</h3>
+    <input type="file" @change='uploadImage' style="opacity: 0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;"/>
+    <h3 class="drag-place" v-show="imageData == null">click or drag and drop image here</h3>
     <v-progress-circular v-show="isLoading"
     id="is-loading" 
     color="blue-lighten-3"
@@ -9,7 +9,7 @@
     :size="34"
     :width="126"
     ></v-progress-circular>
-  <img :src="previewImage" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
+  <img :src="previewImage" v-show="previewImage !== ''" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
   class="samimg">
     <v-btn id="subb" v-show="sub && !reop && !cancelValue" variant="tonal" @click.stop=submitApi location="bottom"
         color="primary">Submit</v-btn>
@@ -58,19 +58,20 @@
     </v-sheet>
   </v-navigation-drawer>
 
-  <div v-if="!viewTools">
+  <div v-show="!viewTools">
     <Footer ref="submitApiFun" id="footerset" @close="viewTools = true" @setImg="imgset" />
   </div>
-  <div v-if="viewTools" id="footerset">
+  <div v-show="viewTools" id="footerset">
     <v-bottom-navigation v-model="value" color="blue" class="overflow-visible" style="height: 56px;" grow>
       <v-row justify="center">
         <v-menu transition="scroll-y-reverse-transition">
-          <template v-slot:activator="{ props }">
-              <v-btn class="ma-1" v-bind="props" @click="viewTools=false">
-                  <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/windows/32/FFFFFF/circled-left-2.png" alt="back"/>
-                  Back
-              </v-btn>
-          </template>
+            <template v-slot:activator>
+                <v-btn class="ma-1" onclick="document.getElementById('myFileInput').click()" @change=uploadImage>
+                    <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/windows/32/FFFFFF/add-image.png" alt="Change"/>
+                    <input type="file" accept="image/png, image/jpeg, image/dcm" v-show="false" id="myFileInput" />
+                    Change X-ray
+                </v-btn>
+            </template>
         </v-menu>
         <v-menu transition="scroll-y-reverse-transition" width="300px" :close-on-content-click="false">
           <template v-slot:activator="{ props }">
@@ -176,6 +177,7 @@ export default {
       this.imgD = nameData;
       this.sub = true;
       this.reop=false
+      this.viewTools=true;
 
     },
     submitFun(){

@@ -1,14 +1,14 @@
 <template>
     <v-bottom-navigation color="blue" class="overflow-visible" style="height: 56px;" grow>
         <v-row justify="center">
-            <v-menu transition="scroll-y-reverse-transition">
+            <!-- <v-menu transition="scroll-y-reverse-transition">
                 <template v-slot:activator="{ props }">
                     <v-btn class="ma-1" v-bind="props" @click="$emit('close')">
                        <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/small/32/FFFFFF/edit-image.png" alt="edit"/>
                        Edit
                     </v-btn>
                 </template>
-            </v-menu>
+            </v-menu> -->
 
             <v-menu transition="scroll-y-reverse-transition">
                 <template v-slot:activator>
@@ -19,15 +19,14 @@
                     </v-btn>
                 </template>
             </v-menu>
-            <v-menu transition="scroll-y-reverse-transition">
+            <!-- <v-menu transition="scroll-y-reverse-transition">
                 <template v-slot:activator="{ props }">
                     <v-btn class="ma-1" v-bind="props">
                       <img class="ml-3 mb-1" width="38" height="25" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/time-machine--v2.png" alt="recent"/>                        
                       Recent
                     </v-btn>
                 </template>
-
-            </v-menu>
+            </v-menu> -->
 
         </v-row>
 
