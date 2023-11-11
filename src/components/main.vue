@@ -1,7 +1,7 @@
 <template>
-  <v-main class="d-flex align-center justify-center" style="min-height:100vh; display: flex; background-color: black;">
-    <input type="file" @change='uploadImage' style="opacity: 0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;"/>
-    <h3 class="drag-place" v-show="imageData == null">click or drag and drop image here</h3>
+  <v-main class="d-flex align-center justify-center" style="height:70vh; display: flex; background-color: black;">
+    <input type="file" @change='uploadImage' style="opacity: 1; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;"/>
+    <h3 class="drag-place">click or drag and drop image here</h3>
     <v-progress-circular v-show="isLoading"
     id="is-loading" 
     color="blue-lighten-3"
@@ -11,8 +11,7 @@
     ></v-progress-circular>
   <img :src="previewImage" v-show="previewImage !== ''" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
   class="samimg">
-    <v-btn id="subb" v-show="sub && !reop && !cancelValue" variant="tonal" @click.stop=submitApi location="bottom"
-        color="primary">Submit</v-btn>
+    <v-btn id="subb" v-show="sub && !reop && !cancelValue" variant="tonal" @click.stop=submitApi color="primary" location="bottom">Submit</v-btn>
     <v-btn id="subb" v-show="reop" variant="tonal" color="primary" @click="drawer = true" location="bottom">Reopen</v-btn>
     <v-btn id="subb" color="red" style="z-index: 3000;" v-show="cancelValue" @click="cancelReq" location="bottom">Cancel request</v-btn>
   </v-main>
@@ -61,8 +60,8 @@
   <div v-show="!viewTools">
     <Footer ref="submitApiFun" id="footerset" @close="viewTools = true" @setImg="imgset" />
   </div>
-  <div v-show="viewTools" id="footerset">
-    <v-bottom-navigation v-model="value" color="blue" class="overflow-visible" style="height: 56px;" grow>
+  <div v-if="viewTools" id="footerset">
+    <v-bottom-navigation v-model="value" color="blue" class="overflow-hidden" style="height: 56px;" grow>
       <v-row justify="center">
         <v-menu transition="scroll-y-reverse-transition">
             <template v-slot:activator>
@@ -152,7 +151,7 @@ export default {
       currentTextIndex: 0,
       typedText: "",
       isDis:true,
-      currentPosition: 0,
+      currentPosition: 0, 
       reop:false,
       isLoading:false,
       snackbar: false,
@@ -228,7 +227,7 @@ body{
 }
 
 .samimg {
-  width: 100%;
+  width: 100vw;
   height:fit-content;
   max-height: 100vh;
   align-self: center;
@@ -313,6 +312,12 @@ body{
   margin: 80px 6%;
   left: 0;
   transform: translateX(0)
+}
+@media screen and (max-width:768px){
+  .samimg{
+    height: 100%;
+    width: auto;
+  }
 }
 }
 </style>
