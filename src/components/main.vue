@@ -3,11 +3,9 @@
     <input type="file" @change='uploadImage' style="opacity: 1; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;"/>
     <h3 class="drag-place">click or drag and drop image here</h3>
     <v-progress-circular v-show="isLoading"
-    id="is-loading" 
+    id="is-loading"
     color="blue-lighten-3"
     indeterminate
-    :size="34"
-    :width="126"
     ></v-progress-circular>
   <img :src="previewImage" v-show="previewImage !== ''" :style="{ filter: 'brightness(' + briVal + '%) ' + 'contrast(' + conVal + '%)' }" alt=""
   class="samimg">
@@ -283,10 +281,9 @@ body{
 #is-loading{
   position: absolute;
   align-self: center;
-  background-color: rgba(25, 23, 23,0.7);
-  /* padding:20% 25%; */
-  height: 100% !important;
-  width: 100% !important;
+  background-color: transparent !important;
+  height: 10% !important;
+  width: 10% !important;
   z-index: 1;
 
 }
@@ -317,6 +314,10 @@ body{
   .samimg{
     height: 100%;
     width: auto;
+  }
+  #is-loading{
+    height: 15% !important;
+    width: 15% !important;
   }
 }
 }
