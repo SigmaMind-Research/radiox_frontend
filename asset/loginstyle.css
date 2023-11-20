@@ -232,9 +232,9 @@ h4 {
 }
 
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 1176px) {
     html {
-        font-size: 0.42em;
+        font-size: 0.66em;
     }
 
     .login__box {
@@ -263,7 +263,7 @@ h4 {
         margin-top: 2%;
         font-size: 2.4rem;
         width: auto;
-        height:70vh
+        height:40vh
     }
 
     .login_cont {
@@ -278,4 +278,20 @@ h4 {
         width: 100%;
     }
 
+}
+
+@media screen and (max-width: 760px){
+    html{
+        font-size: 0.42rem;
+    }
+    .login__card{
+        height: 70vh;
+    }
+}
+
+@media screen and (max-height:700px) {
+    .footer-text{
+        visibility: hidden;
+    }
+    
 }
