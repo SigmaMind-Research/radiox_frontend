@@ -12,14 +12,18 @@ body {
     text-align: left;
     margin-left: 15%;
 }
+
 .top-left-image {
     position: absolute;
     top: 10px;
     left: 25px;
-    width: 50px; /* Set your desired width */
-    height: 50px; /* Set your desired height */
+    width: 50px;
+    /* Set your desired width */
+    height: 50px;
+    /* Set your desired height */
     /* Add any other styles you want for the image */
-  }
+}
+
 .greetings {
     font-size: 3.7rem;
     width: 70%;
@@ -38,24 +42,29 @@ body {
     animation: jump 2s ease-in-out infinite;
 }
 
-#animation h1 span:nth-child(1){
-    animation-delay:0.2s;
+#animation h1 span:nth-child(1) {
+    animation-delay: 0.2s;
 }
-#animation h1 span:nth-child(2){
-    animation-delay:0.4s;
+
+#animation h1 span:nth-child(2) {
+    animation-delay: 0.4s;
 }
-#animation h1 span:nth-child(3){
-    animation-delay:0.6s;
+
+#animation h1 span:nth-child(3) {
+    animation-delay: 0.6s;
 }
-@keyframes jump{
-    0%{
-        opacity:0;
+
+@keyframes jump {
+    0% {
+        opacity: 0;
     }
-    50%{
-        opacity:1;
+
+    50% {
+        opacity: 1;
     }
-    100%{
-        opacity:0;
+
+    100% {
+        opacity: 0;
     }
 }
 
@@ -130,9 +139,11 @@ body {
     display: flex;
     align-items: center;
 }
-.login-sheet{
+
+.login-sheet {
     margin-bottom: 50%;
 }
+
 .hr-text {
     line-height: 1em;
     position: relative;
@@ -216,19 +227,22 @@ h4 {
     margin: 20px 0;
 }
 
-.footer-text{
+.footer-text {
     position: fixed;
     width: 30%;
     bottom: 20px;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13.5px;
 }
+
 .footer-image {
     /* Set the image size as needed */
-    width: 50px; /* Adjust the width to your preference */
-    height: auto; /* Auto adjust the height to maintain aspect ratio */
+    width: 50px;
+    /* Adjust the width to your preference */
+    height: auto;
+    /* Auto adjust the height to maintain aspect ratio */
 }
 
 
@@ -263,7 +277,7 @@ h4 {
         margin-top: 2%;
         font-size: 2.4rem;
         width: auto;
-        height:40vh
+        height: 40vh
     }
 
     .login_cont {
@@ -271,27 +285,30 @@ h4 {
         display: block;
         /* height: 20vh; */
     }
-    .login-sheet{
+
+    .login-sheet {
         margin-bottom: 0%;
     }
-    .footer-text{
+
+    .footer-text {
         width: 100%;
     }
 
 }
 
-@media screen and (max-width: 760px){
-    html{
+@media screen and (max-width: 760px) {
+    html {
         font-size: 0.42rem;
     }
-    .login__card{
+
+    .login__card {
         height: 70vh;
     }
 }
 
 @media screen and (max-height:700px) {
-    .footer-text{
+    .footer-text {
         visibility: hidden;
     }
-    
+
 }
