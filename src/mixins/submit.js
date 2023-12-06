@@ -15,7 +15,7 @@ export default {
             const abortSignal = abortController.signal
             
 
-            this.originalTexts=[]
+            this.originalTexts=null;
             this.currentPosition=0;
             this.currentTextIndex = 0;
             this.typedText="";
@@ -30,15 +30,17 @@ export default {
                     "Authorization": authTkn
                 };
                 
-                await axios.post(import.meta.env.VITE_BASE_URL + '/home/', formimg, { headers: head0, signal: abortSignal })
+                await axios.post(import.meta.env.VITE_BASE_URL + 'home/', formimg, { headers: head0, signal: abortSignal })
                     .then(response => {
                         if (response.data =='Upload a Valid Image'){
                             this.originalTexts = "Uploaded image is not a x-ray. Please upload a valid image"
                         }
+                        else if (response.data == 'Failed to connect to TorchServe container') {
+                            this.originalTexts = "There was some error connecting to server please try again after sometime..."
+                        }
                         else{
-                            this.originalTexts[0] = "Impression: "+ response.data.Impression + "\n"
-                            this.originalTexts[1] = "\nFindings: "+ response.data.Findings + "\n"
-                            this.originalTexts[2] = "\nAdditional Oservations: " + response.data.Additional_Observations + "\n"
+                            console.log(response.data);
+                            this.originalTexts =response.data.report;
                         }
                         this.drawer = true;
                         this.startTyping();
