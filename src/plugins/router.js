@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import splashView from '../pages/splash.vue'
 import homeView from '../pages/home.vue'
 import signupView from '../pages/signup.vue'
 import loginView from '../pages/login.vue'
@@ -22,7 +23,12 @@ const router = createRouter({
             component: loginView
         },
         {
-            path: '/',
+            path:'/',
+            name: 'splash',
+            component:splashView
+        },
+        {
+            path: '/home',
             name: 'home',
             component: homeView,
         },

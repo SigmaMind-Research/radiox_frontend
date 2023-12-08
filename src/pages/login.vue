@@ -68,7 +68,7 @@
       })
     },
     async loginWithGoogle() {
-      window.open(import.meta.env.VITE_BASE_URL + "/auth/google-login/", '_blank');
+      window.open(import.meta.env.VITE_BASE_URL + "auth/google-login/", '_blank');
       window.addEventListener('message', (event) => {
           const tokens = event.data.tokens;
           localStorage.setItem('token0', tokens[0])

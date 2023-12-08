@@ -45,7 +45,7 @@
 
   <v-navigation-drawer v-model="drawer" location="bottom" class="h-auto mt-pt-12" temporary>
     <v-sheet>
-      <textarea id="txt" v-model="typedText" class="typewriter-text w-100" rows="10" :readonly="ifedit"></textarea>
+      <textarea id="txt" v-model="typedText" class="typewriter-text w-100" rows="14" :readonly="ifedit"></textarea>
       <v-spacer></v-spacer>
       <v-sheet class="d-flex flex-wrap">
         <v-btn class="flex-1-0 ma-2" color="secondary" @click="ifedit = !ifedit">Edit</v-btn>
@@ -145,7 +145,7 @@ export default {
       conVal: 100,
       value: '',
       ifedit:true,
-      originalTexts: [],
+      originalTexts:null,
       currentTextIndex: 0,
       typedText: "",
       isDis:true,
