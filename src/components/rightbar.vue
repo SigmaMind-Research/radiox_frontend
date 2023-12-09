@@ -86,8 +86,7 @@ body{
 .typewriter-text {
   display: inline-block;
   overflow: hidden;
-  white-space: wrap;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin: 0 auto;
   padding: 0 0.25em;
 }
