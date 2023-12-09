@@ -46,7 +46,7 @@
     async userLogin(){
       this.isLoading = true;
       localStorage.clear()
-       axios.post(import.meta.env.VITE_BASE_URL + 'auth/login/',this.loginData)
+       axios.post(import.meta.env.VITE_BASE_URL + '/auth/login/',this.loginData)
       .then((response) =>{
         if(response.status==200){  // or 201
           const key0 = response.data.Authorization[0];  // accesss token
@@ -68,7 +68,7 @@
       })
     },
     async loginWithGoogle() {
-      window.open(import.meta.env.VITE_BASE_URL + "auth/google-login/", '_blank');
+      window.open(import.meta.env.VITE_BASE_URL + "/auth/google-login/", '_blank');
       window.addEventListener('message', (event) => {
           const tokens = event.data.tokens;
           localStorage.setItem('token0', tokens[0])

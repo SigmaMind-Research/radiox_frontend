@@ -8,7 +8,6 @@
 <script>
 import Navbar from '../components/navbar.vue'
 import Main from '../components/main.vue'
-import axios from 'axios';
 
 export default {
     name: 'home',
